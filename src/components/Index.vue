@@ -1,11 +1,17 @@
 <template>
     <div>
-        <h1>Hello</h1>
+        <generic-page>
+            <div slot="body">
+                <h1>Hello</h1>
+            </div>
+        </generic-page>
     </div>
 </template>
 
 <script>
+import GenericPage from './widgets/generic/GenericPage'
 export default {
+    components: {GenericPage}
 }
 </script>
 
