@@ -28,6 +28,12 @@ export default {
                     }
                 },
                 {
+                    icon: 'fa-folder',
+                    callBack: function () {
+                        router.push('/work')
+                    }
+                },
+                {
                     icon: 'fa-envelope',
                     callBack: function () {
                         router.push('/contact')

@@ -1,8 +1,8 @@
 <template>
     <div :class="'circle-menu circle-menu-'+position">
-        <button @click="toggleMenu" type="button" class="btn btn-success circle-btn"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
-        <div v-if="isMenuOpen">
-            <button @click="item.callBack" v-for="item in menuSet" type="button" class="btn btn-success circle-btn-sm"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
+        <button @click="toggleMenu" id="menu-toggle" type="button" class="btn btn-success circle-btn"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
+        <div v-show="isMenuOpen">
+            <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" class="btn btn-success circle-btn-sm"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
         </div>
     </div>
 </template>
@@ -21,7 +21,8 @@ export default {
     },
     data () {
         return {
-            isMenuOpen: false
+            isMenuOpen: true,
+            radius: 100// px
         }
     },
     computed: {
@@ -63,7 +64,27 @@ export default {
     methods: {
         toggleMenu: function () {
             this.isMenuOpen = !this.isMenuOpen
+        },
+        positionButtons: function () {
+            const r = document.getElementById('menu-toggle').getBoundingClientRect()
+            const offset = document.getElementById('menu-btn-0').getBoundingClientRect().width / 2
+            const x = r.left + (r.width / 2)
+            const y = r.top + (r.height / 2)
+            const angleDiff = this.menuSet.length > 1 ? this.availableAngle / (this.menuSet.length - 1) : this.availableAngle / 2
+            for (let i = 0; i < this.menuSet.length; i++) {
+                const angle = (this.startAngle + (i * angleDiff)) * Math.PI / 180
+                const newX = x - (this.radius * Math.sin(angle)) - offset
+                const newY = y - (this.radius * Math.cos(angle)) - offset
+                document.getElementById('menu-btn-' + i).style.left = newX + 'px'
+                document.getElementById('menu-btn-' + i).style.top = newY + 'px'
+            }
+            this.isMenuOpen = false
         }
+    },
+    mounted () {
+        this.$nextTick(() => {
+            this.positionButtons()
+        })
     }
 }
 </script>
@@ -121,5 +142,6 @@ export default {
     border-radius: 50%;
     height: 3rem;
     width: 3rem;
+    position: fixed;
 }
 </style>
