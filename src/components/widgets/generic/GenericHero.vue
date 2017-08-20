@@ -12,3 +12,9 @@ export default {
     props: ['title', 'subTitle']
 }
 </script>
+
+<style scoped>
+.jumbotron {
+    margin-bottom: 0px;
+}
+</style>

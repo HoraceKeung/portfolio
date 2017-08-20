@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nav-bar></nav-bar>
-        <generic-hero :title="title" :sub-title="subTitle"></generic-hero>
+        <circle-menu :menu-set="menuSet" :position="circleMenuPosition"></circle-menu>
+        <generic-hero :title="title" :sub-title="subTitle" :hero-img="heroImg"></generic-hero>
         <slot name="body"></slot>
         <!-- <page-footer></page-footer>
         <back-to-top-button></back-to-top-button> -->
@@ -9,33 +9,35 @@
 </template>
 
 <script>
-import NavBar from './NavBar'
 import GenericHero from './GenericHero'
+import CircleMenu from './CircleMenu'
+import router from '@/router'
 // import PageFooter from './PageFooter'
 // import BackToTopButton from './BackToTopButton'
 export default {
-    props: ['title', 'subTitle'],
-    components: {NavBar, GenericHero}
+    props: ['title', 'subTitle', 'heroImg'],
+    components: {GenericHero, CircleMenu},
+    data () {
+        return {
+            circleMenuPosition: 'bot-right',
+            menuSet: [
+                {
+                    icon: 'fa-home',
+                    callBack: function () {
+                        router.push('/')
+                    }
+                },
+                {
+                    icon: 'fa-envelope',
+                    callBack: function () {
+                        router.push('/contact')
+                    }
+                }
+            ]
+        }
+    }
 }
 </script>
 
 <style scoped>
-.page-body {
-    min-height: 550px;
-}
-@media screen and (max-width: 770px) {
-    .page-body {
-        min-height: 650px;
-    }
-}
-@media screen and (max-width: 575px) {
-    .page-body {
-        min-height: 950px;
-    }
-}
-@media screen and (max-width: 500px) {
-    .page-body {
-        min-height: 1050px;
-    }
-}
 </style>

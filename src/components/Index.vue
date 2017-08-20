@@ -2,7 +2,7 @@
     <div>
         <generic-page title="Hello">
             <div slot="body">
-                <h1>Hello</h1>
+                <div class="dummy"></div>
             </div>
         </generic-page>
     </div>
@@ -16,4 +16,8 @@ export default {
 </script>
 
 <style scoped>
+.dummy {
+    height: 1000px;
+    border: 1px solid red;
+}
 </style>
