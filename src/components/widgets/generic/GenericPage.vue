@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav-bar></nav-bar>
-        <!-- <generic-hero :title="title" :sub-title="subTitle"></generic-hero> -->
+        <generic-hero :title="title" :sub-title="subTitle"></generic-hero>
         <slot name="body"></slot>
         <!-- <page-footer></page-footer>
         <back-to-top-button></back-to-top-button> -->
@@ -10,17 +10,17 @@
 
 <script>
 import NavBar from './NavBar'
+import GenericHero from './GenericHero'
 // import PageFooter from './PageFooter'
-// import GenericHero from './GenericHero'
 // import BackToTopButton from './BackToTopButton'
 export default {
     props: ['title', 'subTitle'],
-    components: {NavBar}
+    components: {NavBar, GenericHero}
 }
 </script>
 
 <style scoped>
-/*.page-body {
+.page-body {
     min-height: 550px;
 }
 @media screen and (max-width: 770px) {
@@ -37,5 +37,5 @@ export default {
     .page-body {
         min-height: 1050px;
     }
-}*/
+}
 </style>
