@@ -9,10 +9,55 @@
 
 <script>
 export default {
-    props: ['menuSet', 'position'],
+    props: {
+        menuSet: {
+            type: Array,
+            required: true
+        },
+        position: {
+            type: String,
+            default: 'top-left'
+        }
+    },
     data () {
         return {
             isMenuOpen: false
+        }
+    },
+    computed: {
+        availableAngle: function () {
+            switch (this.position) {
+            case 'top-left':
+            case 'top-right':
+            case 'bot-left':
+            case 'bot-right':
+                return 90
+            default:
+                return 180
+            }
+        },
+        startAngle: function () {
+            switch (this.position) {
+            case 'top-left':
+                return 90
+            case 'top-center':
+            case 'top-right':
+            case 'bot-center':
+                return 270
+            default:
+                return 0
+            }
+        },
+        isClockwise: function () {
+            switch (this.position) {
+            case 'top-left':
+            case 'mid-left':
+            case 'bot-left':
+            case 'bot-center':
+                return true
+            default:
+                return false
+            }
         }
     },
     methods: {
