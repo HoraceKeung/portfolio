@@ -19,7 +19,7 @@ export default {
     components: {GenericHero, CircleMenu},
     data () {
         return {
-            circleMenuPosition: 'bot-right',
+            circleMenuPosition: 'mid-right',
             menuSet: [
                 {
                     icon: 'fa-home',

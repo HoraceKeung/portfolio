@@ -28,23 +28,18 @@ export default {
     computed: {
         availableAngle: function () {
             switch (this.position) {
-            case 'top-left':
-            case 'top-right':
-            case 'bot-left':
-            case 'bot-right':
-                return 90
-            default:
+            case 'mid-left':
+            case 'mid-right':
                 return 180
+            default:
+                return 90
             }
         },
         startAngle: function () {
             switch (this.position) {
             case 'top-left':
-                return 90
-            case 'top-center':
             case 'top-right':
-            case 'bot-center':
-                return 270
+                return 90
             default:
                 return 0
             }
@@ -54,11 +49,16 @@ export default {
             case 'top-left':
             case 'mid-left':
             case 'bot-left':
-            case 'bot-center':
                 return true
             default:
                 return false
             }
+        },
+        anchorX: function () {
+            return this.position.split('-').slice(-1)[0]
+        },
+        anchorY: function () {
+            return this.position.split('-')[0] === 'bot' ? 'bottom' : 'top'
         }
     },
     methods: {
@@ -68,15 +68,15 @@ export default {
         positionButtons: function () {
             const r = document.getElementById('menu-toggle').getBoundingClientRect()
             const offset = document.getElementById('menu-btn-0').getBoundingClientRect().width / 2
-            const x = r.left + (r.width / 2)
-            const y = r.top + (r.height / 2)
+            const x = this.anchorX === 'left' ? r.left + (r.width / 2) : document.documentElement.clientWidth - r.left - (r.width / 2)
+            const y = this.anchorY === 'top' ? r.top + (r.height / 2) : document.documentElement.clientHeight - r.top - (r.height / 2)
             const angleDiff = this.menuSet.length > 1 ? this.availableAngle / (this.menuSet.length - 1) : this.availableAngle / 2
             for (let i = 0; i < this.menuSet.length; i++) {
                 const angle = (this.startAngle + (i * angleDiff)) * Math.PI / 180
-                const newX = x - (this.radius * Math.sin(angle)) - offset
-                const newY = y - (this.radius * Math.cos(angle)) - offset
-                document.getElementById('menu-btn-' + i).style.left = newX + 'px'
-                document.getElementById('menu-btn-' + i).style.top = newY + 'px'
+                const newX = x + (this.radius * Math.sin(angle) * (this.isClockwise ? -1 : 1) * (this.anchorX === 'left' ? -1 : 1)) - offset
+                const newY = y + (this.radius * Math.cos(angle) * (this.anchorY === 'top' ? -1 : 1)) - offset
+                document.getElementById('menu-btn-' + i).style[this.anchorX] = newX + 'px'
+                document.getElementById('menu-btn-' + i).style[this.anchorY] = newY + 'px'
             }
             this.isMenuOpen = false
         }
@@ -97,11 +97,6 @@ export default {
 .circle-menu-top-left {
     top: 0px;
     left: 0px;
-}
-.circle-menu-top-center {
-    top: 0px;
-    width: 100%;
-    text-align: center;
 }
 .circle-menu-top-right {
     top: 0px;
@@ -124,11 +119,6 @@ export default {
     bottom: 0px;
     left: 0px;
 }
-.circle-menu-bot-center {
-    bottom: 0px;
-    width: 100%;
-    text-align: center;
-}
 .circle-menu-bot-right {
     bottom: 0px;
     right: 0px;
@@ -143,5 +133,10 @@ export default {
     height: 3rem;
     width: 3rem;
     position: fixed;
+    transition: all .1s ease-in-out;
+}
+.circle-btn-sm:hover
+{
+	transform: scale(1.1);
 }
 </style>
