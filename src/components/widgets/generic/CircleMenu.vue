@@ -1,5 +1,5 @@
 <template>
-    <div :class="'circle-menu circle-menu-'+position">
+    <div :class="(draggable?'':'circle-menu ')+'circle-menu-'+position">
         <button @click="toggleMenu" id="menu-toggle" type="button" class="btn btn-success circle-btn"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
         <div v-show="isMenuOpen">
             <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" class="btn btn-success circle-btn-sm"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
@@ -17,6 +17,10 @@ export default {
         position: {
             type: String,
             default: 'top-left'
+        },
+        draggable: {
+            type: Boolean,
+            default: false
         }
     },
     data () {
