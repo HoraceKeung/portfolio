@@ -1,6 +1,6 @@
 const state = {
     isDraggingMenu: false,
-    circleMenuPosition: 'top-left'
+    circleMenuPosition: 'bot-right'
 }
 
 const mutations = {
