@@ -1,8 +1,7 @@
 <template>
     <div>
-        <generic-page>
+        <generic-page title="Work">
             <div slot="body">
-                <h1>Work</h1>
             </div>
         </generic-page>
     </div>

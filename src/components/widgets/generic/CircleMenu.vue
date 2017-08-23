@@ -1,8 +1,10 @@
 <template>
-    <div :class="(draggable?'':'circle-menu ')+'circle-menu-'+position">
-        <button @click="toggleMenu" id="menu-toggle" type="button" class="btn btn-success circle-btn"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
-        <div v-show="isMenuOpen">
-            <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" class="btn btn-success circle-btn-sm"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
+    <div :class="'circle-menu circle-menu-'+position">
+        <div :class="'menu-hover-'+position" @mouseleave="mouseLeaveMenu">
+            <button @click="toggleMenuLock" @mouseenter="openMenu" id="menu-toggle" type="button" :class="'btn'+(isMenuLocked?' btn-success':' btn-outline-success')+' circle-btn'+(position==='mid-right'?' circle-btn-mid-right':(position.split('-')[1]==='right'?' circle-btn-right':'')+(position.split('-')[0]==='mid'?' circle-btn-mid':'')+(position.split('-')[0]==='bot'?' circle-btn-bot':''))"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
+            <div v-show="isMenuOpen">
+                <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" :class="'btn'+(isMenuLocked?' btn-success':' btn-outline-success')+' circle-btn-sm'"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
+            </div>
         </div>
     </div>
 </template>
@@ -17,15 +19,12 @@ export default {
         position: {
             type: String,
             default: 'top-left'
-        },
-        draggable: {
-            type: Boolean,
-            default: false
         }
     },
     data () {
         return {
             isMenuOpen: true,
+            isMenuLocked: false,
             radius: 100// px
         }
     },
@@ -66,8 +65,16 @@ export default {
         }
     },
     methods: {
-        toggleMenu: function () {
-            this.isMenuOpen = !this.isMenuOpen
+        openMenu: function () {
+            this.isMenuOpen = true
+        },
+        mouseLeaveMenu: function () {
+            if (!this.isMenuLocked) {
+                this.isMenuOpen = false
+            }
+        },
+        toggleMenuLock: function () {
+            this.isMenuLocked = !this.isMenuLocked
         },
         positionButtons: function () {
             const r = document.getElementById('menu-toggle').getBoundingClientRect()
@@ -94,6 +101,38 @@ export default {
 </script>
 
 <style scoped>
+.menu-hover-top-left {
+    height: 160px;
+    width: 160px;
+    border-bottom-right-radius: 8em;
+}
+.menu-hover-top-right {
+    height: 160px;
+    width: 160px;
+    border-bottom-left-radius: 8em;
+}
+.menu-hover-mid-left {
+    height: 250px;
+    width: 160px;
+    border-top-right-radius: 8em;
+    border-bottom-right-radius: 8em;
+}
+.menu-hover-mid-right {
+    height: 250px;
+    width: 160px;
+    border-top-left-radius: 8em;
+    border-bottom-left-radius: 8em;
+}
+.menu-hover-bot-left {
+    height: 160px;
+    width: 160px;
+    border-top-right-radius: 8em;
+}
+.menu-hover-bot-right {
+    height: 160px;
+    width: 160px;
+    border-top-left-radius: 8em;
+}
 .circle-menu {
     position: fixed;
     margin: 1rem;
@@ -131,6 +170,23 @@ export default {
     border-radius: 50%;
     height: 4rem;
     width: 4rem;
+}
+.circle-btn-right {
+    right: 0px;
+    position: absolute;
+}
+.circle-btn-mid {
+    top: 5.75rem;
+    position: relative;
+}
+.circle-btn-bot {
+    bottom: 0px;
+    position: absolute;
+}
+.circle-btn-mid-right {
+    top: 5.75rem;
+    left: 94px;
+    position: relative;
 }
 .circle-btn-sm {
     border-radius: 50%;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <generic-page title="Contact">
+        <generic-page title="Option">
             <div slot="body">
             </div>
         </generic-page>

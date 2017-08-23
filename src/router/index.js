@@ -3,13 +3,15 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Work from '@/components/Work'
 import Contact from '@/components/Contact'
+import Option from '@/components/Option'
 
 Vue.use(Router)
 
 const routes = [
     { path: '/', component: Index },
     { path: '/work', component: Work },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: Contact },
+    { path: '/option', component: Option }
 ]
 
 const router = new Router({

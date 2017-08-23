@@ -1,27 +1,22 @@
 <template>
     <div>
         <div v-for="l in locations" :key="l.position" :class="l.position+' position-div'">
-            <draggable @start="dragStart" @end="dragEnd" v-model="l.array" :class="(l.array.length>0||!showPlaceHolder)?'':'place-inactive'" element="div" :options="dragOptions">
-                <div v-for="e in l.array"><circle-menu :menu-set="menuSet" :position="l.position" :draggable="true"></circle-menu></div>
+            <draggable v-model="l.array" :class="(l.array.length>0||!isDraggingMenu)?'':'place-inactive'" element="div" :options="dragOptions">
+                <div v-for="e in l.array"><div class=""></div></div>
             </draggable>
         </div>
+        <circle-menu :menu-set="menuSet" :position="circleMenuPosition"></circle-menu>
     </div>
 </template>
 
 <script>
+import vuex from 'vuex'
 import draggable from 'vuedraggable'
 import CircleMenu from './CircleMenu'
 import router from '@/router'
 export default {
     components: {draggable, CircleMenu},
-    methods: {
-        dragStart: function () {
-            this.showPlaceHolder = true
-        },
-        dragEnd: function () {
-            this.showPlaceHolder = false
-        }
-    },
+    computed: vuex.mapGetters(['isDraggingMenu', 'circleMenuPosition']),
     data () {
         return {
             menuSet: [
@@ -42,6 +37,12 @@ export default {
                     callBack: function () {
                         router.push('/contact')
                     }
+                },
+                {
+                    icon: 'fa-cog',
+                    callBack: function () {
+                        router.push('/option')
+                    }
                 }
             ],
             dragOptions: {
@@ -51,7 +52,7 @@ export default {
             locations: [
                 {
                     position: 'mid-left',
-                    array: [1]
+                    array: []
                 },
                 {
                     position: 'mid-right',
@@ -59,7 +60,7 @@ export default {
                 },
                 {
                     position: 'top-left',
-                    array: []
+                    array: [1]
                 },
                 {
                     position: 'top-right',
@@ -73,8 +74,7 @@ export default {
                     position: 'bot-right',
                     array: []
                 }
-            ],
-            showPlaceHolder: false
+            ]
         }
     }
 }
