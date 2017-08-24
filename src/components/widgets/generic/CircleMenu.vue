@@ -110,6 +110,8 @@ export default {
     height: 160px;
     width: 160px;
     border-bottom-left-radius: 8em;
+    position: absolute;
+    right: 0px;
 }
 .menu-hover-mid-left {
     height: 250px;
@@ -122,6 +124,8 @@ export default {
     width: 160px;
     border-top-left-radius: 8em;
     border-bottom-left-radius: 8em;
+    position: absolute;
+    right: 0px;
 }
 .menu-hover-bot-left {
     height: 160px;
@@ -132,10 +136,14 @@ export default {
     height: 160px;
     width: 160px;
     border-top-left-radius: 8em;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 .circle-menu {
     position: fixed;
     margin: 1rem;
+    width: 0px;
 }
 .circle-menu-top-left {
     top: 0px;
@@ -155,11 +163,11 @@ export default {
 }
 .circle-menu-mid-right {
     top: 0px;
+    right: 0px;
     height: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
-    right: 0px;
 }
 .circle-menu-bot-left {
     bottom: 0px;
@@ -188,7 +196,7 @@ export default {
 }
 .circle-btn-mid-right {
     top: 5.75rem;
-    left: 94px;
+    right: -6rem;
     position: relative;
 }
 .circle-btn-sm {
