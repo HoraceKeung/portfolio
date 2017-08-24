@@ -1,11 +1,23 @@
 <template>
     <div>
-        <div v-for="l in locations" :key="l.position" :class="l.position+' position-div'">
-            <draggable v-model="l.array" :class="(l.array.length>0||!isDraggingMenu)?'':'place-inactive'" element="div" :options="dragOptions">
-                <div v-for="e in l.array"><div class=""></div></div>
-            </draggable>
+        <div class="drag-overlay" v-if="isDraggingMenu">
+            <div v-for="l in locations" :key="l.position" :class="l.position+' position-div'">
+                <draggable v-model="l.array" :class="(l.array.length>0||!isDraggingMenu)?'':'place-inactive'" element="div" :options="dragOptions">
+                    <div v-for="e in l.array">
+                        <div class="current-pos-indicator btn">
+                            <i class="fa fa-2x fa-compass" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </draggable>
+            </div>
+            <div class="drag-overlay-text">
+                <div class="text-center">
+                    <p>Drag and drop the menu to one of the positions</p>
+                    <button @click="setIsDraggingMenu(false)" type="button" class="btn btn-dynamic">DONE</button>
+                </div>
+            </div>
         </div>
-        <circle-menu :menu-set="menuSet" :position="circleMenuPosition"></circle-menu>
+        <circle-menu v-else :menu-set="menuSet" :position="circleMenuPosition"></circle-menu>
     </div>
 </template>
 
@@ -17,6 +29,7 @@ import router from '@/router'
 export default {
     components: {draggable, CircleMenu},
     computed: vuex.mapGetters(['isDraggingMenu', 'circleMenuPosition']),
+    methods: vuex.mapActions(['setIsDraggingMenu', 'setCircleMenuPosition']),
     data () {
         return {
             menuSet: [
@@ -100,12 +113,16 @@ export default {
     right: 0px;
 }
 .mid-left {
+    top: 0px;
+    left: 0px;
     height: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
 }
 .mid-right {
+    top: 0px;
+    right: 0px;
     height: 100%;
     flex-direction: column;
     display: flex;
@@ -128,6 +145,37 @@ export default {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    border: 3px grey dashed;
+    border: 3px #fff dashed;
+}
+.drag-overlay {
+    background: rgba(25, 25, 25, .7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+}
+.current-pos-indicator {
+    color: #fff;
+    border: 1px #fff solid;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    cursor: move;
+    background-color: transparent;
+}
+.current-pos-indicator:hover {
+    background-color: #fff;
+    color: rgba(25, 25, 25, .7);
+}
+.current-pos-indicator i {
+    position: relative;
+    top: 0.5rem;
+}
+.drag-overlay-text {
+    color: #fff;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
 }
 </style>

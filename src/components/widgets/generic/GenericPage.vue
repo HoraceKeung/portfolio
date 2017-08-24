@@ -2,6 +2,7 @@
     <div>
         <generic-hero :title="title" :sub-title="subTitle" :hero-img="heroImg"></generic-hero>
         <slot name="body"></slot>
+        <div class="gap"></div>
         <page-footer></page-footer>
         <back-to-top-button></back-to-top-button>
     </div>
@@ -18,4 +19,12 @@ export default {
 </script>
 
 <style scoped>
+.gap {
+    margin-bottom: 150px;
+}
+@media screen and (max-width: 575px) {
+    .gap {
+        margin-bottom: 320px;
+    }
+}
 </style>

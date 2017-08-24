@@ -1,10 +1,14 @@
-$color: #28a745;
-$dark: darken($color,15%);
+// $color: #28a745;
+// $dark: darken($color,15%);
+:root {
+    --color: #28a745;
+    --dark: #02811f;
+}
 a {
     text-decoration: none !important;
 }
 a:hover {
-    color: $dark;
+    color: var(--dark);
 }
 ul {
     list-style: none;
@@ -20,23 +24,23 @@ html {
     min-height: 100%;
 }
 .color-dynamic {
-    color: $color;
+    color: var(--color);
 }
 .btn-dynamic {
-    background-color: $color;
-    border-color: $color;
+    background-color: var(--color);
+    border-color: var(--color);
     color: #fff;
 }
 .btn-dynamic:hover {
-    background-color: $dark;
+    background-color: var(--dark);
 }
 .btn-outline-dynamic {
-    color: $color;
+    color: var(--color);
     background-color: transparent;
     background-image: none;
-    border-color: $color;
+    border-color: var(--color);
 }
 .btn-outline-dynamic:hover {
     color: #fff;
-    background-color: $color;
+    background-color: var(--color);
 }
