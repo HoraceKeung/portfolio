@@ -49,6 +49,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0.25rem;
 }
 .aligner:hover {
     background: rgba(25, 25, 25, .5);

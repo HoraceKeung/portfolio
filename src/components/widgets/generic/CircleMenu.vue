@@ -146,12 +146,15 @@ export default {
     right: 0px;
 }
 .circle-menu-mid-left {
+    top: 0px;
+    left: 0px;
     height: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
 }
 .circle-menu-mid-right {
+    top: 0px;
     height: 100%;
     flex-direction: column;
     display: flex;

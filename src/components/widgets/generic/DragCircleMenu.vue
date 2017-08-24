@@ -2,7 +2,7 @@
     <div>
         <div class="drag-overlay" v-if="isDraggingMenu">
             <div v-for="l in locations" :key="l.position" :class="l.position+' position-div'">
-                <draggable v-model="l.array" :class="(l.array.length>0||!isDraggingMenu)?'':'place-inactive'" element="div" :options="dragOptions">
+                <draggable @end="dragEnd" v-model="l.array" :class="(l.array.length>0||!isDraggingMenu)?'':'place-inactive'" element="div" :options="dragOptions">
                     <div v-for="e in l.array">
                         <div class="current-pos-indicator btn">
                             <i class="fa fa-2x fa-compass" aria-hidden="true"></i>
@@ -12,7 +12,7 @@
             </div>
             <div class="drag-overlay-text">
                 <div class="text-center">
-                    <p>Drag and drop the menu to one of the positions</p>
+                    <p>Drag and drop the circle menu to one of the positions</p>
                     <button @click="setIsDraggingMenu(false)" type="button" class="btn btn-dynamic">DONE</button>
                 </div>
             </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 import vuex from 'vuex'
 import draggable from 'vuedraggable'
 import CircleMenu from './CircleMenu'
@@ -29,7 +30,29 @@ import router from '@/router'
 export default {
     components: {draggable, CircleMenu},
     computed: vuex.mapGetters(['isDraggingMenu', 'circleMenuPosition']),
-    methods: vuex.mapActions(['setIsDraggingMenu', 'setCircleMenuPosition']),
+    methods: Object.assign({},
+        vuex.mapActions(['setIsDraggingMenu', 'setCircleMenuPosition']),
+        {
+            dragEnd: function () {
+                const pos = this.locations.find(function (x) {
+                    return x.array.length > 0
+                }).position
+                this.setCircleMenuPosition(pos)
+                Cookies.set('circleMenuPositionCookie', pos)
+            }
+        }
+    ),
+    created () {
+        const cmpc = Cookies.get('circleMenuPositionCookie')
+        if (typeof cmpc === 'undefined') {
+            this.locations[2].array.push(1)// cookie not found, set default position to be top left
+        } else {
+            this.locations.find(function (x) {
+                return x.position === cmpc
+            }).array.push(1)
+            this.setCircleMenuPosition(cmpc)
+        }
+    },
     data () {
         return {
             menuSet: [
@@ -73,7 +96,7 @@ export default {
                 },
                 {
                     position: 'top-left',
-                    array: [1]
+                    array: []
                 },
                 {
                     position: 'top-right',
