@@ -1,0 +1,42 @@
+$color: #28a745;
+$dark: darken($color,15%);
+a {
+    text-decoration: none !important;
+}
+a:hover {
+    color: $dark;
+}
+ul {
+    list-style: none;
+}
+.btn, .pointer {
+    cursor: pointer;
+}
+.btn:focus {
+    box-shadow: none;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+.color-dynamic {
+    color: $color;
+}
+.btn-dynamic {
+    background-color: $color;
+    border-color: $color;
+    color: #fff;
+}
+.btn-dynamic:hover {
+    background-color: $dark;
+}
+.btn-outline-dynamic {
+    color: $color;
+    background-color: transparent;
+    background-image: none;
+    border-color: $color;
+}
+.btn-outline-dynamic:hover {
+    color: #fff;
+    background-color: $color;
+}

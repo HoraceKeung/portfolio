@@ -14,7 +14,4 @@ export default {
 </script>
 
 <style scoped>
-.jumbotron {
-    margin-bottom: 0px;
-}
 </style>

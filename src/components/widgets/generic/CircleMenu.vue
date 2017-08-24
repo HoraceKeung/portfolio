@@ -1,9 +1,9 @@
 <template>
     <div :class="'circle-menu circle-menu-'+position">
         <div :class="'menu-hover-'+position" @mouseleave="mouseLeaveMenu">
-            <button @click="toggleMenuLock" @mouseenter="openMenu" id="menu-toggle" type="button" :class="'btn'+(isMenuLocked?' btn-success':' btn-outline-success')+' circle-btn'+(position==='mid-right'?' circle-btn-mid-right':(position.split('-')[1]==='right'?' circle-btn-right':'')+(position.split('-')[0]==='mid'?' circle-btn-mid':'')+(position.split('-')[0]==='bot'?' circle-btn-bot':''))"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
+            <button @click="toggleMenuLock" @mouseenter="openMenu" id="menu-toggle" type="button" :class="'btn'+(isMenuLocked?' btn-dynamic':' btn-outline-dynamic')+' circle-btn'+(position==='mid-right'?' circle-btn-mid-right':(position.split('-')[1]==='right'?' circle-btn-right':'')+(position.split('-')[0]==='mid'?' circle-btn-mid':'')+(position.split('-')[0]==='bot'?' circle-btn-bot':''))"><i class="fa fa-2x fa-compass" aria-hidden="true"></i></button>
             <div v-show="isMenuOpen">
-                <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" :class="'btn'+(isMenuLocked?' btn-success':' btn-outline-success')+' circle-btn-sm'"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
+                <button @click="item.callBack" v-for="(item,index) in menuSet" :id="'menu-btn-'+index" type="button" :class="'btn'+(isMenuLocked?' btn-dynamic':' btn-outline-dynamic')+' circle-btn-sm'"><i :class="'fa '+item.icon" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>
