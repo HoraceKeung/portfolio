@@ -1,6 +1,6 @@
 <template>
     <div>
-        <generic-page title="Contact">
+        <generic-page title="Blog">
             <div slot="body">
             </div>
         </generic-page>

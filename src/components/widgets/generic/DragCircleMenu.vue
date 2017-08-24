@@ -29,7 +29,21 @@ import CircleMenu from './CircleMenu'
 import router from '@/router'
 export default {
     components: {draggable, CircleMenu},
-    computed: vuex.mapGetters(['isDraggingMenu', 'circleMenuPosition']),
+    computed: Object.assign({},
+        vuex.mapGetters(['pathIconMap', 'isDraggingMenu', 'circleMenuPosition']),
+        {
+            menuSet: function () {
+                return this.pathIconMap.map(function (x) {
+                    return {
+                        icon: x.icon,
+                        callBack: function () {
+                            router.push('/' + (x.path === 'home' ? '' : x.path))
+                        }
+                    }
+                })
+            }
+        }
+    ),
     methods: Object.assign({},
         vuex.mapActions(['setIsDraggingMenu', 'setCircleMenuPosition']),
         {
@@ -55,32 +69,6 @@ export default {
     },
     data () {
         return {
-            menuSet: [
-                {
-                    icon: 'fa-home',
-                    callBack: function () {
-                        router.push('/')
-                    }
-                },
-                {
-                    icon: 'fa-folder',
-                    callBack: function () {
-                        router.push('/work')
-                    }
-                },
-                {
-                    icon: 'fa-envelope',
-                    callBack: function () {
-                        router.push('/contact')
-                    }
-                },
-                {
-                    icon: 'fa-cog',
-                    callBack: function () {
-                        router.push('/option')
-                    }
-                }
-            ],
             dragOptions: {
                 group: 'dragCircleMenu',
                 ghostClass: 'ghost'

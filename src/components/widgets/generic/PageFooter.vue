@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="container">
             <div class="row footer-links">
-                <div class="col-sm-3 text-center" v-for="l in links"><router-link class="color-dynamic" :to="'/'+(l.path==='home'?'':l.path)"><i :class="'fa '+l.icon" aria-hidden="true"></i> {{l.path.toUpperCase()}}</router-link></div>
+                <div class="col-sm-3 text-center" v-for="m in pathIconMap"><router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{m.path.toUpperCase()}}</router-link></div>
             </div>
             <div class="float-right"><span>Horace Keung {{currentYear}}</span></div>
         </div>
@@ -10,34 +10,16 @@
 </template>
 
 <script>
+import vuex from 'vuex'
 export default {
-    computed: {
-        currentYear () {
-            return new Date().getFullYear()
+    computed: Object.assign({},
+        vuex.mapGetters(['pathIconMap']),
+        {
+            currentYear () {
+                return new Date().getFullYear()
+            }
         }
-    },
-    data () {
-        return {
-            links: [
-                {
-                    path: 'home',
-                    icon: 'fa-home'
-                },
-                {
-                    path: 'work',
-                    icon: 'fa-folder'
-                },
-                {
-                    path: 'contact',
-                    icon: 'fa-envelope'
-                },
-                {
-                    path: 'option',
-                    icon: 'fa-cog'
-                }
-            ]
-        }
-    }
+    )
 }
 </script>
 

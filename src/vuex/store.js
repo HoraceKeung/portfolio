@@ -7,6 +7,24 @@ import option from './modules/option'
 Vue.use(Vuex)
 
 const state = {
+    pathIconMap: [
+        {
+            path: 'home',
+            icon: 'fa-home'
+        },
+        {
+            path: 'work',
+            icon: 'fa-folder'
+        },
+        {
+            path: 'blog',
+            icon: 'fa-rss'
+        },
+        {
+            path: 'option',
+            icon: 'fa-cog'
+        }
+    ]
 }
 
 const mutations = {
