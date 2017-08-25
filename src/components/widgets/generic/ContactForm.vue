@@ -24,6 +24,7 @@
 <script>
 import vuex from 'vuex'
 export default {
+    computed: vuex.mapGetters(['contactErr']),
     methods: vuex.mapActions(['initContact', 'submitContact']),
     data () {
         return {

@@ -25,6 +25,10 @@ const getters = {
     },
     themeColor: function (state) {
         return state.option.themeColor
+    },
+    // for contact form
+    contactErr: function (state) {
+        return state.contact.contactErr
     }
 }
 
