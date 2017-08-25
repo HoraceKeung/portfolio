@@ -4,14 +4,19 @@
             <div class="row footer-links">
                 <div class="col-sm-3 text-center" v-for="m in pathIconMap"><router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{m.path.toUpperCase()}}</router-link></div>
             </div>
-            <div class="float-right"><span>Horace Keung {{currentYear}}</span></div>
+            <div>
+                <contact-form></contact-form>
+            </div>
+            <div class="float-right footer-author-year"><span>Horace Keung &copy; {{currentYear}}</span></div>
         </div>
     </footer>
 </template>
 
 <script>
 import vuex from 'vuex'
+import ContactForm from './ContactForm'
 export default {
+    components: {ContactForm},
     computed: Object.assign({},
         vuex.mapGetters(['pathIconMap']),
         {
@@ -29,10 +34,13 @@ export default {
     position: absolute;
     bottom: 0;
     width: 100%;
-    line-height: 60px; /* Vertically center the text there */
     background-color: #24292e;
 }
 .footer-links a {
     font-weight: bold;
+    line-height: 60px;
+}
+.footer-author-year {
+    line-height: 60px;
 }
 </style>

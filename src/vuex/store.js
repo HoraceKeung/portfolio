@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions'
 import getters from './getters'
+import alert from './modules/alert'
 import option from './modules/option'
+import contact from './modules/contact'
 
 Vue.use(Vuex)
 
@@ -24,10 +26,23 @@ const state = {
             path: 'option',
             icon: 'fa-cog'
         }
-    ]
+    ],
+    spinnerConfig: {
+        loading: false,
+        size: '30px'
+    },
+    totalFetch: 0
 }
 
 const mutations = {
+    NEW_FETCH (state) {
+        state.totalFetch++
+        state.spinnerConfig.loading = state.totalFetch > 0
+    },
+    FETCH_DONE (state) {
+        state.totalFetch--
+        state.spinnerConfig.loading = state.totalFetch > 0
+    }
 }
 
 export default new Vuex.Store({
@@ -36,7 +51,9 @@ export default new Vuex.Store({
     actions,
     mutations,
     modules: {
-        option
+        option,
+        contact,
+        alert
     },
     strict: true
 })

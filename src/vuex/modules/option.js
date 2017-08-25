@@ -1,6 +1,7 @@
 const state = {
     isDraggingMenu: false,
-    circleMenuPosition: 'top-left'
+    circleMenuPosition: 'top-left',
+    themeColor: '#28a745'
 }
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
     },
     SET_CIRCLE_MENU_POSITION (state, pos) {
         state.circleMenuPosition = pos
+    },
+    SET_THEME_COLOR (state, color) {
+        state.themeColor = color
     }
 }
 
