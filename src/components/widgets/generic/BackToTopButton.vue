@@ -20,15 +20,16 @@ export default {
             this.smoothScrollToTop()
         },
         smoothScrollToTop: function () {
-            if (document.body.scrollTop !== 0 && !this.userScrollDuringSmoothScroll) {
-                window.scrollBy(0, -(document.body.scrollTop / 10))
+            const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset || 0
+            if (top !== 0 && !this.userScrollDuringSmoothScroll) {
+                window.scrollBy(0, -(top / 10 < 1 ? 1 : top / 10))
                 window.requestAnimationFrame(this.smoothScrollToTop)
             } else {
                 this.userScrollDuringSmoothScroll = false
             }
         },
         handleScroll: function () {
-            this.showBtn = document.body.scrollTop > 0
+            this.showBtn = (document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset || 0) > 0
         },
         handleMousewheel: function () {
             this.userScrollDuringSmoothScroll = true
@@ -37,10 +38,12 @@ export default {
     created: function () {
         window.addEventListener('scroll', this.handleScroll)
         window.addEventListener('mousewheel', this.handleMousewheel)
+        window.addEventListener('DOMMouseScroll', this.handleMousewheel)// for FireFox
     },
     destroyed: function () {
         window.removeEventListener('scroll', this.handleScroll)
         window.removeEventListener('mousewheel', this.handleMousewheel)
+        window.removeEventListener('DOMMouseScroll', this.handleMousewheel)// for FireFox
     }
 }
 </script>
