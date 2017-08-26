@@ -4,9 +4,7 @@
             <div class="row footer-links">
                 <div class="col-sm-3 text-center" v-for="m in pathIconMap"><router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{m.path.toUpperCase()}}</router-link></div>
             </div>
-            <div>
-                <contact-form></contact-form>
-            </div>
+            <contact-form></contact-form>
             <div class="float-right footer-author-year"><span>Horace Keung &copy; {{currentYear}}</span></div>
         </div>
     </footer>
