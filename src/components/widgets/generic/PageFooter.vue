@@ -8,8 +8,8 @@
         <div class="pattern">
             <div class="container">
                 <div style="text-align:center;height:0px;"><button class="btn btn-cv"><h5>CV</h5></button></div>
-                <div class="pattern-outer"></div>
-                <div class="pattern-inner"></div>
+                <div class="pattern-upper"></div>
+                <div class="pattern-lower"></div>
             </div>
         </div>
         <div class="container">
@@ -53,7 +53,7 @@ export default {
     transform: scale(1.1);
     color: var(--grey);
 }
-.pattern-inner {
+.pattern-lower {
     height: 0;
     border-width: 0px 30px 30px 30px;
     border-style: solid;
@@ -61,7 +61,7 @@ export default {
     top: 0.4rem;
     position: relative;
 }
-.pattern-outer {
+.pattern-upper {
     height: 0;
     border-width: 0px 30px 30px 30px;
     border-style: solid;
