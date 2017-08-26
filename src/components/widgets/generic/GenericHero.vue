@@ -18,5 +18,6 @@ export default {
 .logo {
     display: block;
     margin: 0 auto;
+    margin-bottom: 2rem;
 }
 </style>

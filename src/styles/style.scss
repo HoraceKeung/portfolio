@@ -1,8 +1,12 @@
 // $color: #28a745;
 // $dark: darken($color,15%);
 :root {
+    --grey: #24292e;
     --color: #28a745;
     --dark: #02811f;
+}
+body {
+    color: var(--grey);
 }
 a {
     text-decoration: none !important;
@@ -45,3 +49,40 @@ html {
     color: #fff;
     background-color: var(--color);
 }
+
+// START v-tooltip
+.tooltip {
+  display: block !important;
+  padding: 4px;
+  z-index: 10000;
+
+  .tooltip-inner {
+    background: black;
+    color: white;
+    border-radius: 0.25rem;
+    padding: 3px 8px;
+    text-align: center;
+  }
+
+  .tooltip-arrow {
+    display: none;
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .15s;
+  }
+}
+.tooltip-danger {
+    .tooltip-inner {
+      background: #dc3545 !important;
+    }
+}
+// END v-tooltip
