@@ -9,22 +9,27 @@ import contact from './modules/contact'
 Vue.use(Vuex)
 
 const state = {
+    languageObj: null,
     pathIconMap: [
         {
             path: 'home',
-            icon: 'fa-home'
+            icon: 'fa-home',
+            langId: 0
         },
         {
             path: 'work',
-            icon: 'fa-folder'
+            icon: 'fa-folder',
+            langId: 1
         },
         {
             path: 'blog',
-            icon: 'fa-rss'
+            icon: 'fa-rss',
+            langId: 2
         },
         {
             path: 'option',
-            icon: 'fa-cog'
+            icon: 'fa-cog',
+            langId: 3
         }
     ],
     spinnerConfig: {
@@ -35,6 +40,9 @@ const state = {
 }
 
 const mutations = {
+    SET_LANGUAGE_OBJ (state, obj) {
+        state.languageObj = obj
+    },
     NEW_FETCH (state) {
         state.totalFetch++
         state.spinnerConfig.loading = state.totalFetch > 0

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <generic-page title="Work">
+        <generic-page :title="languageObj[1]">
             <div slot="body">
             </div>
         </generic-page>
@@ -8,9 +8,11 @@
 </template>
 
 <script>
+import vuex from 'vuex'
 import GenericPage from './widgets/generic/GenericPage'
 export default {
-    components: {GenericPage}
+    components: {GenericPage},
+    computed: vuex.mapGetters(['languageObj'])
 }
 </script>
 

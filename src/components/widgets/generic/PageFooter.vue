@@ -2,12 +2,14 @@
     <footer class="footer">
         <div class="container">
             <div class="row footer-links">
-                <div class="col-sm-3 text-center" v-for="m in pathIconMap"><router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{m.path.toUpperCase()}}</router-link></div>
+                <div class="col-sm-3 text-center" v-for="m in pathIconMap">
+                    <router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{languageObj[m.langId].toUpperCase()}}</router-link>
+                </div>
             </div>
         </div>
         <div class="pattern">
             <div class="container">
-                <div style="text-align:center;height:0px;"><button class="btn btn-cv"><h5>CV</h5></button></div>
+                <div style="text-align:center;height:0px;"><button class="btn btn-cv"><h5>{{languageObj[7]}}</h5></button></div>
                 <div class="pattern-upper"></div>
                 <div class="pattern-lower"></div>
             </div>
@@ -25,7 +27,7 @@ import ContactForm from './ContactForm'
 export default {
     components: {ContactForm},
     computed: Object.assign({},
-        vuex.mapGetters(['pathIconMap']),
+        vuex.mapGetters(['pathIconMap', 'languageObj']),
         {
             currentYear () {
                 return new Date().getFullYear()

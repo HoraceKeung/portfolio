@@ -1,6 +1,8 @@
 import 'whatwg-fetch'
 import inputValidator from '@/util/inputValidator'
 import alertController from '@/util/alertController'
+import languageLoader from '@/util/languageLoader'
+import Cookies from 'js-cookie'
 
 const actions = {
     // for option
@@ -9,6 +11,17 @@ const actions = {
     },
     setCircleMenuPosition: function (store, pos) {
         store.commit('SET_CIRCLE_MENU_POSITION', pos)
+    },
+    loadLanguageObj: function (store) {
+        const lc = Cookies.get('languageCookie')
+        if (typeof lc === 'undefined') {
+            languageLoader.load('english')// cookie not found, set default language to English
+        } else {
+            languageLoader.load(lc)
+        }
+    },
+    aboutToSetLang: function (store) {
+        languageLoader.load('chinese_traditional')
     },
     // for contact form
     initContact: function (store) {

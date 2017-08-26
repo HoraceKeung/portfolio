@@ -26,6 +26,9 @@ const getters = {
     themeColor: function (state) {
         return state.option.themeColor
     },
+    languageObj: function (state) {
+        return state.languageObj
+    },
     // for contact form
     contactErr: function (state) {
         return state.contact.contactErr

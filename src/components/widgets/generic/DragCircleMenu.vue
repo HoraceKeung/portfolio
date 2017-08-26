@@ -12,8 +12,8 @@
             </div>
             <div class="drag-overlay-text">
                 <div class="text-center">
-                    <p>Drag and drop the circle menu to one of the positions</p>
-                    <button @click="setIsDraggingMenu(false)" type="button" class="btn btn-dynamic">DONE</button>
+                    <p>{{languageObj[13]}}</p>
+                    <button @click="setIsDraggingMenu(false)" type="button" class="btn btn-dynamic">{{languageObj[14]}}</button>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@ import router from '@/router'
 export default {
     components: {draggable, CircleMenu},
     computed: Object.assign({},
-        vuex.mapGetters(['pathIconMap', 'isDraggingMenu', 'circleMenuPosition']),
+        vuex.mapGetters(['pathIconMap', 'isDraggingMenu', 'circleMenuPosition', 'languageObj']),
         {
             menuSet: function () {
                 return this.pathIconMap.map(function (x) {
@@ -59,7 +59,7 @@ export default {
     created () {
         const cmpc = Cookies.get('circleMenuPositionCookie')
         if (typeof cmpc === 'undefined') {
-            this.locations[2].array.push(1)// cookie not found, set default position to be top left
+            this.locations[2].array.push(1)// cookie not found, set default position to top left
         } else {
             this.locations.find(function (x) {
                 return x.position === cmpc

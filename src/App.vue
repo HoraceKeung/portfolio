@@ -8,12 +8,17 @@
 </template>
 
 <script>
+import vuex from 'vuex'
 import DragCircleMenu from './components/widgets/generic/DragCircleMenu'
 import VueSpinner from './components/widgets/util/VueSpinner.vue'
 import VueAlert from './components/widgets/util/VueAlert.vue'
 export default {
     name: 'app',
-    components: {DragCircleMenu, VueSpinner, VueAlert}
+    components: {DragCircleMenu, VueSpinner, VueAlert},
+    methods: vuex.mapActions(['loadLanguageObj']),
+    created () {
+        this.loadLanguageObj()
+    }
 }
 </script>
 
