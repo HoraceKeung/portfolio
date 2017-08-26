@@ -1,10 +1,6 @@
+@import url("color.css");
 // $color: #28a745;
 // $dark: darken($color,15%);
-:root {
-    --grey: #24292e;
-    --color: #28a745;
-    --dark: #02811f;
-}
 body {
     color: var(--grey);
 }
@@ -82,7 +78,7 @@ html {
 }
 .tooltip-danger {
     .tooltip-inner {
-      background: #dc3545 !important;
+      background: var(--danger) !important;
     }
 }
 // END v-tooltip

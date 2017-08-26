@@ -20,16 +20,16 @@ export default {
 
 <style scoped>
 .gap {
-    margin-bottom: 470px;
+    margin-bottom: 535px;
 }
 @media screen and (max-width: 767px) {
     .gap {
-        margin-bottom: 550px;
+        margin-bottom: 635px;
     }
 }
 @media screen and (max-width: 575px) {
     .gap {
-        margin-bottom: 725px;
+        margin-bottom: 815px;
     }
 }
 </style>

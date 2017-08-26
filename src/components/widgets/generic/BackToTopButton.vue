@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style scope>
+@import url("../../../styles/color.css");
 .btn-top {
     color: white;
     opacity: .4;
@@ -58,7 +59,7 @@ export default {
     z-index: 500;
     width: 3rem;
     height: 3rem;
-    background-color: #28a745;
+    background-color: var(--color);
     border-radius: 50%;
     padding: 0;
     margin: 0;

@@ -45,6 +45,8 @@ const actions = {
                     alertController.callAlert('top', 'Something went wrong!', 'danger')
                 }
             })
+        } else {
+            alertController.callAlert('top', 'Invalid input!', 'danger')
         }
     }
 }
