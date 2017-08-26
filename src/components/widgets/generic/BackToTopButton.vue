@@ -56,7 +56,7 @@ export default {
     position: fixed;
     bottom: 11rem;
     right: 1.5rem;
-    z-index: 500;
+    z-index: 1;
     width: 3rem;
     height: 3rem;
     background-color: var(--color);
