@@ -1,13 +1,15 @@
 <template>
 <div v-show="showBtn">
-    <button type="button" class="btn btn-top" @click="triggerSmoothScrollToTop">
+    <button type="button" :class="'btn btn-top'+(circleMenuPosition==='mid-right'?' below-menu':'')" @click="triggerSmoothScrollToTop">
         <i class="fa fa-angle-up fa-2x"></i>
     </button>
 </div>
 </template>
 
 <script>
+import vuex from 'vuex'
 export default {
+    computed: vuex.mapGetters(['circleMenuPosition']),
     data: function () {
         return {
             showBtn: false,
@@ -63,6 +65,9 @@ export default {
     border-radius: 50%;
     padding: 0;
     margin: 0;
+}
+.below-menu {
+    bottom: 5rem;
 }
 .btn-top:hover {
     opacity: 1;
