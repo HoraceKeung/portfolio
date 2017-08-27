@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style scoped>
+.jumbotron {
+    background-color: transparent;
+}
 .logo {
     display: block;
     margin: 0 auto;

@@ -59,6 +59,7 @@
     "v-tooltip": "^2.0.0-beta.11",
     "vue-color": "^2.4.0",
     "vue-loader": "^12.1.0",
+    "vue-particles": "^1.0.9",
     "vue-spinner": "^1.0.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.3",

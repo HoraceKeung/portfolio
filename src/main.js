@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import VTooltip from 'v-tooltip'
 Vue.use(VTooltip)
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 import App from '@/App'
 import router from '@/router'
 import store from '@/vuex/store'
