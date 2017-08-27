@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <div class="card mb-3">
-                            <div class="card-body" @click="aboutToSetLang">
+                            <div class="card-body" data-toggle="modal" data-target="#language-option-modal">
                                 <div class="aligner"><h4 class="card-text mx-3">{{languageObj[6].toUpperCase()}}</h4></div>
                                 <img width="100%" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGcgZGF0YS1uYW1lPSJHb29nbGUgVHJhbnNsYXRlIiBpZD0iR29vZ2xlX1RyYW5zbGF0ZSI+PHBhdGggZD0iTTIyLDRIMTIuMjNMMTEsLjM0QS41LjUsMCwwLDAsMTAuNSwwSDJBMiwyLDAsMCwwLDAsMlYxOGEyLDIsMCwwLDAsMiwyaDkuNjVMMTMsMjMuNjhhLjUuNSwwLDAsMCwuNDcuMzJIMjJhMiwyLDAsMCwwLDItMlY2QTIsMiwwLDAsMCwyMiw0Wk03LjUsMTVhNC41LDQuNSwwLDEsMSwyLjkyLTcuOTIuNS41LDAsMSwxLS42NS43NkEzLjUsMy41LDAsMSwwLDExLDExSDcuNWEuNS41LDAsMCwxLDAtMWg0YS41LjUsMCwwLDEsLjUuNUE0LjUsNC41LDAsMCwxLDcuNSwxNVptMTEuOS00YTExLjI2LDExLjI2LDAsMCwxLTEuODYsMy4yOSw2LjY3LDYuNjcsMCwwLDEtMS4wNy0xLjQ4LjUuNSwwLDAsMC0uOTMuMzgsOCw4LDAsMCwwLDEuMzQsMS44Nyw4LjksOC45LDAsMCwxLS42NS42MkwxNC42MiwxMVpNMjMsMjJhMSwxLDAsMCwxLTEsMUgxNC42bDIuNzctMy4xN2EuNDkuNDksMCwwLDAsLjA5LS40OGgwbC0uOTEtMi42NmE5LjM2LDkuMzYsMCwwLDAsMS0uODljMSwxLDEuOTMsMS45MSwyLjEyLDIuMDhhLjUuNSwwLDAsMCwuNjgtLjc0Yy0uNDctLjQzLTEuMzMtMS4yNS0yLjEzLTIuMWExMS40OSwxMS40OSwwLDAsMCwyLjIyLTRIMjEuNWEuNS41LDAsMCwwLDAtMUgxOFY5LjVhLjUuNSwwLDAsMC0xLDBWMTBIMTQuNWEuNDkuNDksMCwwLDAtLjIxLDBMMTIuNTcsNUgyMmExLDEsMCwwLDEsMSwxWiIgc3R5bGU9ImZpbGw6IzMwM2M0MiIvPjwvZz48L3N2Zz4=">
                             </div>
@@ -26,20 +26,42 @@
                 </div>
             </div>
         </generic-page>
+        <!-- START language option modal -->
+        <vue-modal id="language-option-modal">
+            <h5 slot="header">{{languageObj[17]}}</h5>
+            <div slot="body">
+                <div class="row">
+                    <div class="col-sm-6" v-for="l in languages">
+                        <p @click="setLang(l)" class="language-option pointer">{{l}}</p>
+                    </div>
+                </div>
+            </div>
+        </vue-modal>
+        <!-- END language option modal -->
     </div>
 </template>
 
 <script>
 import vuex from 'vuex'
 import GenericPage from './widgets/generic/GenericPage'
+import VueModal from './widgets/util/VueModal'
 export default {
-    components: {GenericPage},
-    methods: vuex.mapActions(['setIsDraggingMenu', 'aboutToSetLang']),
-    computed: vuex.mapGetters(['languageObj'])
+    components: {GenericPage, VueModal},
+    methods: vuex.mapActions(['setIsDraggingMenu', 'setLang']),
+    computed: vuex.mapGetters(['languageObj']),
+    data () {
+        return {
+            languages: [
+                'English',
+                '正體中文'
+            ]
+        }
+    }
 }
 </script>
 
 <style scoped>
+@import url("../styles/color.css");
 .aligner {
     cursor: pointer;
     top: 0rem;
@@ -57,5 +79,8 @@ export default {
 }
 .card-text {
     color: #fff;
+}
+.language-option:hover {
+    color: var(--color);
 }
 </style>
