@@ -1,7 +1,9 @@
 <template>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <img class="logo" src="../../../assets/logo.svg">
+            <router-link to="/">
+                <img class="logo pointer" src="../../../assets/logo.svg">
+            </router-link>
             <h1 class="display-3 text-center">{{title}}</h1>
             <p class="lead text-center" v-if="subTitle">{{subTitle}}</p>
         </div>
