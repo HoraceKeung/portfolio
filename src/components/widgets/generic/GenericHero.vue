@@ -17,6 +17,7 @@ export default {
 <style scoped>
 .jumbotron {
     background-color: transparent;
+    margin-bottom: 0px;
 }
 .logo {
     display: block;

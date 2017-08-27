@@ -1,6 +1,7 @@
 <template>
     <div>
         <generic-hero :title="title" :sub-title="subTitle" :hero-img="heroImg"></generic-hero>
+        <path-bar></path-bar>
         <slot name="body"></slot>
         <div class="gap"></div>
         <page-footer></page-footer>
@@ -12,9 +13,10 @@
 import GenericHero from './GenericHero'
 import PageFooter from './PageFooter'
 import BackToTopButton from './BackToTopButton'
+import PathBar from './PathBar'
 export default {
     props: ['title', 'subTitle', 'heroImg'],
-    components: {GenericHero, PageFooter, BackToTopButton}
+    components: {GenericHero, PageFooter, BackToTopButton, PathBar}
 }
 </script>
 
