@@ -2,7 +2,7 @@ const state = {
     isDraggingMenu: false,
     circleMenuPosition: 'top-left',
     themeColor: {
-        hex: '#28a745'
+        hex: '#6540bf'
     }
 }
 
