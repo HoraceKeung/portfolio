@@ -53,14 +53,14 @@ const actions = {
             .then(function (r) {
                 store.commit('FETCH_DONE')
                 if (r.status >= 200 && r.status < 300) {
-                    alertController.callAlert('top', 'Thank you for your message!', 'success')
+                    alertController.callAlert('top', store.state.languageObj[18], 'success')
                     document.getElementById('contact-input-message').value = ''
                 } else {
-                    alertController.callAlert('top', 'Something went wrong!', 'danger')
+                    alertController.callAlert('top', store.state.languageObj[19], 'danger')
                 }
             })
         } else {
-            alertController.callAlert('top', 'Invalid input!', 'danger')
+            alertController.callAlert('top', store.state.languageObj[20], 'danger')
         }
     }
 }
