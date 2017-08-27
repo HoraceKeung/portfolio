@@ -24,6 +24,10 @@ const actions = {
         languageLoader.load(lang)
         Cookies.set('languageCookie', lang)
     },
+    setColour: function (store) {
+        document.documentElement.style.setProperty(`--${'color'}`, 'red')
+        document.getElementById('close-colour-option-modal').click()
+    },
     // for contact form
     initContact: function (store) {
         store.commit('CLEAR_CONTACT_ERR')
