@@ -30,8 +30,8 @@
         <vue-modal id="colour-option-modal">
             <h5 slot="header">{{languageObj[21]}}</h5>
             <div slot="body">
+                <slider :value="themeColor" @input="setColour"></slider>
             </div>
-            <button slot="footer" class="btn btn-dynamic" type="button" @click="setColour">{{languageObj[22]}}</button>
         </vue-modal>
         <!-- END colour option modal -->
         <!-- START language option modal -->
@@ -53,10 +53,11 @@
 import vuex from 'vuex'
 import GenericPage from './widgets/generic/GenericPage'
 import VueModal from './widgets/util/VueModal'
+import { Slider } from 'vue-color'
 export default {
-    components: {GenericPage, VueModal},
+    components: {GenericPage, VueModal, Slider},
     methods: vuex.mapActions(['setIsDraggingMenu', 'setLang', 'setColour']),
-    computed: vuex.mapGetters(['languageObj']),
+    computed: vuex.mapGetters(['languageObj', 'themeColor']),
     data () {
         return {
             languages: [
@@ -90,5 +91,7 @@ export default {
 }
 .language-option:hover {
     color: var(--color);
+    text-decoration: underline;
+    opacity: 0.7;
 }
 </style>

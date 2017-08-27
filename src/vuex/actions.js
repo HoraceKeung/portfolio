@@ -3,6 +3,7 @@ import inputValidator from '@/util/inputValidator'
 import alertController from '@/util/alertController'
 import languageLoader from '@/util/languageLoader'
 import Cookies from 'js-cookie'
+import tinycolor from 'tinycolor2'
 
 const actions = {
     // for option
@@ -24,9 +25,17 @@ const actions = {
         languageLoader.load(lang)
         Cookies.set('languageCookie', lang)
     },
-    setColour: function (store) {
-        document.documentElement.style.setProperty(`--${'color'}`, 'red')
-        document.getElementById('close-colour-option-modal').click()
+    setDefaultColour: function (store) {
+        const cc = Cookies.get('colourCookie')
+        if (typeof cc !== 'undefined') {
+            actions.setColour(store, {hex: cc})
+        }
+    },
+    setColour: function (store, obj) {
+        document.documentElement.style.setProperty(`--${'color'}`, obj.hex)
+        document.documentElement.style.setProperty(`--${'dark'}`, tinycolor(obj.hex).darken(15).toString())
+        store.commit('SET_THEME_COLOR', obj)
+        Cookies.set('colourCookie', obj.hex)
     },
     // for contact form
     initContact: function (store) {

@@ -1,6 +1,6 @@
 <template>
     <div id="spinnerOverlay" v-show="spinnerConfig.loading">
-        <grid-loader :loading="spinnerConfig.loading" :color="themeColor" :size="spinnerConfig.size"></grid-loader>
+        <grid-loader :loading="spinnerConfig.loading" :color="themeColor.hex" :size="spinnerConfig.size"></grid-loader>
     </div>
 </template>
 

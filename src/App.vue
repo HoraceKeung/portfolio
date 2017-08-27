@@ -15,9 +15,10 @@ import VueAlert from './components/widgets/util/VueAlert.vue'
 export default {
     name: 'app',
     components: {DragCircleMenu, VueSpinner, VueAlert},
-    methods: vuex.mapActions(['loadLanguageObj']),
+    methods: vuex.mapActions(['loadLanguageObj', 'setDefaultColour']),
     created () {
         this.loadLanguageObj()
+        this.setDefaultColour()
     }
 }
 </script>

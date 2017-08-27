@@ -1,7 +1,9 @@
 const state = {
     isDraggingMenu: false,
     circleMenuPosition: 'top-left',
-    themeColor: '#28a745'
+    themeColor: {
+        hex: '#28a745'
+    }
 }
 
 const mutations = {
