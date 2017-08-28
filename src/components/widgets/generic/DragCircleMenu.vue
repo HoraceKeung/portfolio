@@ -59,7 +59,7 @@ export default {
     created () {
         const cmpc = Cookies.get('circleMenuPositionCookie')
         if (typeof cmpc === 'undefined') {
-            this.locations[2].array.push(1)// cookie not found, set default position to top left
+            this.locations[3].array.push(1)// cookie not found, set default position to top right
         } else {
             this.locations.find(function (x) {
                 return x.position === cmpc

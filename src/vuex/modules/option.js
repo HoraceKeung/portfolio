@@ -1,8 +1,8 @@
 const state = {
     isDraggingMenu: false,
-    circleMenuPosition: 'top-left',
+    circleMenuPosition: 'top-right', // default position, change this and update value in DragCircleMenu.vue
     themeColor: {
-        hex: '#6540bf'
+        hex: '#3C66FF'// default colour, change this and update value in color.css
     }
 }
 

@@ -10,7 +10,13 @@
             </div>
         </div>
         <div class="container text-center path-bar-content">
-            <vue-typer text='Hello World! I was registered locally!' erase-style='clear' :pre-erase-delay="5000"></vue-typer>
+            <div v-if="typerText"><vue-typer :text='typerText' erase-style='clear' :pre-erase-delay="5000"></vue-typer></div>
+            <div v-else class="text-left mx-5">
+                <span v-for="(p, index) in currentPath">
+                    <router-link class="color-dynamic font-weight-bold" :to="'/'+p">{{(p===''?'home':p).toUpperCase()}}</router-link>
+                    <span class="color-dynamic mx-1" v-if="index!==currentPath.length-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                </span>
+            </div>
         </div>
     </div>
 </template>
@@ -18,7 +24,13 @@
 <script>
 import { VueTyper } from 'vue-typer'
 export default {
-    components: {VueTyper}
+    props: ['typerText'],
+    components: {VueTyper},
+    computed: {
+        currentPath () {
+            return this.$route.path.split('/')
+        }
+    }
 }
 </script>
 
