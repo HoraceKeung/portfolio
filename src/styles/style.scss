@@ -80,3 +80,16 @@ html {
     }
 }
 // END v-tooltip
+
+// START vue typer, https://cngu.github.io/vue-typer/
+.vue-typer {
+    font-family: monospace;
+}
+.vue-typer .custom.char {
+  color: #fff;
+}
+.vue-typer .custom.caret {
+  width: 5px;
+  background-color: #fff;
+}
+// END vue typer

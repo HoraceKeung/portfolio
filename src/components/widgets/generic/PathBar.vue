@@ -9,22 +9,27 @@
                 </div>
             </div>
         </div>
+        <div class="container text-center path-bar-content">
+            <vue-typer text='Hello World! I was registered locally!' erase-style='clear' :pre-erase-delay="5000"></vue-typer>
+        </div>
     </div>
 </template>
 
 <script>
+import { VueTyper } from 'vue-typer'
 export default {
+    components: {VueTyper}
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url("../../../styles/color.css");
 #dark-box {
     height: 30px;
     background-color: var(--grey);
 }
 #path-bar-div {
-    height: 70px;
+    height: 90px;
     margin-bottom: 2rem;
     background-color: var(--grey);
 }
@@ -46,5 +51,9 @@ export default {
 }
 .pattern {
     border-top: 5px solid #fff;
+}
+.path-bar-content {
+    position: relative;
+    top: -8rem;
 }
 </style>
