@@ -16,7 +16,10 @@
         </div>
         <div class="container">
             <contact-form></contact-form>
-            <div class="float-right footer-author-year"><span>&copy; {{currentYear}} Horace Keung</span></div>
+            <div class="mt-3 mb-4">
+                <a v-for="m in media" :href="m.href" target="_blank"><i :class="'pointer mr-1 fa fa-2x '+m.icon+(circleMenuPosition==='bot-right'?'':' float-right')" aria-hidden="true"></i></a>
+                <span :class="(circleMenuPosition==='bot-right'?'float-right':'')">&copy; {{currentYear}} Horace Keung</span>
+            </div>
         </div>
     </footer>
 </template>
@@ -27,13 +30,31 @@ import ContactForm from './ContactForm'
 export default {
     components: {ContactForm},
     computed: Object.assign({},
-        vuex.mapGetters(['pathIconMap', 'languageObj']),
+        vuex.mapGetters(['pathIconMap', 'languageObj', 'circleMenuPosition']),
         {
             currentYear () {
                 return new Date().getFullYear()
             }
         }
-    )
+    ),
+    data () {
+        return {
+            media: [
+                {
+                    icon: 'fa-linkedin-square',
+                    href: 'https://uk.linkedin.com/in/horace-keung-8186aa9a'
+                },
+                {
+                    icon: 'fa-facebook-square',
+                    href: 'https://www.facebook.com/horace.keung'
+                },
+                {
+                    icon: 'fa-github',
+                    href: 'https://github.com/horacekeung'
+                }
+            ]
+        }
+    }
 }
 </script>
 
@@ -89,9 +110,6 @@ export default {
 }
 .footer-links a {
     font-weight: bold;
-    line-height: 60px;
-}
-.footer-author-year {
     line-height: 60px;
 }
 </style>
