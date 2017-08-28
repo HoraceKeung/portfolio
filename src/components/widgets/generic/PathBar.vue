@@ -63,11 +63,11 @@ export default {
 <style lang="scss" scoped>
 @import url("../../../styles/color.css");
 #dark-box {
-    height: 30px;
+    height: 20px;
     background-color: var(--grey);
 }
 #path-bar-div {
-    height: 90px;
+    height: 70px;
     margin-bottom: 2rem;
     background-color: var(--grey);
 }

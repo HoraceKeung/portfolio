@@ -18,7 +18,7 @@ export default {
         {
             typerText () {
                 var self = this
-                return [23, 24, 25].map(function (x) {
+                return [23, 24, 25, 26].map(function (x) {
                     return self.languageObj[x]
                 })
             }
