@@ -13,22 +13,23 @@ import vuex from 'vuex'
 import GenericPage from './widgets/generic/GenericPage'
 export default {
     components: {GenericPage},
-    computed: vuex.mapGetters(['languageObj']),
-    data () {
-        return {
-            typerText: [
-                'Hello World! How are you today?',
-                'Welcome to my site! Please have a look around!',
-                'You can navigate around using the circle menu.'
-            ]
+    computed: Object.assign({},
+        vuex.mapGetters(['languageObj']),
+        {
+            typerText () {
+                var self = this
+                return [23, 24, 25].map(function (x) {
+                    return self.languageObj[x]
+                })
+            }
         }
-    }
+    )
 }
 </script>
 
 <style scoped>
 .dummy {
-    min-height: 1000px;
+    min-height: 500px;
     border: 1px red solid;
 }
 </style>

@@ -13,7 +13,7 @@
             <div v-if="typerText"><vue-typer :text='typerText' erase-style='clear' :pre-erase-delay="5000"></vue-typer></div>
             <div v-else class="text-left mx-5">
                 <span v-for="(p, index) in currentPath">
-                    <router-link class="color-dynamic font-weight-bold" :to="'/'+p">{{(p===''?'home':p).toUpperCase()}}</router-link>
+                    <router-link class="color-dynamic font-weight-bold" :to="'/'+p">{{translatePath(p).toUpperCase()}}</router-link>
                     <span class="color-dynamic mx-1" v-if="index!==currentPath.length-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                 </span>
             </div>
@@ -22,13 +22,39 @@
 </template>
 
 <script>
+import vuex from 'vuex'
+import _ from 'lodash'
+import Cookies from 'js-cookie'
 import { VueTyper } from 'vue-typer'
 export default {
     props: ['typerText'],
     components: {VueTyper},
-    computed: {
-        currentPath () {
-            return this.$route.path.split('/')
+    computed: Object.assign({},
+        vuex.mapGetters(['languageObj']),
+        {
+            currentPath () {
+                return this.$route.path.split('/')
+            },
+            isEnglish () {
+                const lc = Cookies.get('languageCookie')
+                return typeof lc === 'undefined' || lc === 'English'
+            }
+        }
+    ),
+    methods: {
+        translatePath (p) {
+            if (this.isEnglish) {
+                return p === '' ? 'home' : p
+            } else {
+                var index = 0
+                if (p !== '') {
+                    const eng = require('../../../../static/languages/English.json')
+                    index = _.findKey(eng, function (x) {
+                        return x.toLowerCase() === p
+                    })
+                }
+                return typeof index === 'undefined' ? p : this.languageObj[index]
+            }
         }
     }
 }
