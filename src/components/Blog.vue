@@ -2,6 +2,7 @@
     <div>
         <generic-page :title="languageObj[2]">
             <div slot="body">
+                <router-view></router-view>
             </div>
         </generic-page>
     </div>

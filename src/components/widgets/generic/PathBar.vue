@@ -13,7 +13,7 @@
             <div v-if="typerText"><vue-typer :text='typerText' erase-style='clear' :pre-erase-delay="5000"></vue-typer></div>
             <div v-else class="text-left mx-5">
                 <span v-for="(p, index) in currentPath">
-                    <router-link class="color-dynamic font-weight-bold" :to="'/'+p">{{translatePath(p).toUpperCase()}}</router-link>
+                    <router-link class="color-dynamic font-weight-bold" :to="p.path">{{p.label}}</router-link>
                     <span class="color-dynamic mx-1" v-if="index!==currentPath.length-1"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                 </span>
             </div>
@@ -33,7 +33,16 @@ export default {
         vuex.mapGetters(['languageObj']),
         {
             currentPath () {
-                return this.$route.path.split('/')
+                var output = []
+                const paths = this.$route.path.split('/')
+                for (let i = 0; i < paths.length; i++) {
+                    const thisPath = paths.slice(0, i + 1).join('/')
+                    output.push({
+                        label: this.translatePath(paths[i]).toUpperCase().split('-').join(' '),
+                        path: thisPath === '' ? '/' : thisPath
+                    })
+                }
+                return output
             },
             isEnglish () {
                 const lc = Cookies.get('languageCookie')
