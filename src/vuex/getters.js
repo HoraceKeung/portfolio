@@ -32,6 +32,10 @@ const getters = {
     // for contact form
     contactErr: function (state) {
         return state.contact.contactErr
+    },
+    // for blog
+    blogData: function (state) {
+        return state.blog.blogData
     }
 }
 

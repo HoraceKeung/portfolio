@@ -5,6 +5,7 @@ import getters from './getters'
 import alert from './modules/alert'
 import option from './modules/option'
 import contact from './modules/contact'
+import blog from './modules/blog'
 
 Vue.use(Vuex)
 
@@ -61,7 +62,8 @@ export default new Vuex.Store({
     modules: {
         option,
         contact,
-        alert
+        alert,
+        blog
     },
     strict: true
 })

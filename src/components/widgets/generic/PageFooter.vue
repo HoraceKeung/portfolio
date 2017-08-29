@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row footer-links">
                 <div class="col-sm-3 text-center" v-for="m in pathIconMap">
-                    <router-link class="color-dynamic" :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{languageObj[m.langId].toUpperCase()}}</router-link>
+                    <router-link :to="'/'+(m.path==='home'?'':m.path)"><i :class="'fa '+m.icon" aria-hidden="true"></i> {{languageObj[m.langId].toUpperCase()}}</router-link>
                 </div>
             </div>
         </div>
