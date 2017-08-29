@@ -62,7 +62,8 @@ export default {
         return {
             languages: [
                 'English',
-                '正體中文'
+                '正體中文',
+                '日本語'
             ]
         }
     }
