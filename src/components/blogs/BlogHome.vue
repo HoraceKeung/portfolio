@@ -5,7 +5,7 @@
                 Filter
             </div>
             <div class="col-lg-8">
-                <div class="card mb-3" v-for="b in blogData">
+                <div v-for="(b,index) in blogData" :class="'card'+(index===blogData.length-1?'':' mb-3')">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card-body">
