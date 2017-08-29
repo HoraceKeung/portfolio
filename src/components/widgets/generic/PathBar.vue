@@ -24,7 +24,6 @@
 <script>
 import vuex from 'vuex'
 import _ from 'lodash'
-import Cookies from 'js-cookie'
 import { VueTyper } from 'vue-typer'
 export default {
     props: ['typerText'],
@@ -43,16 +42,12 @@ export default {
                     })
                 }
                 return output
-            },
-            isEnglish () {
-                const lc = Cookies.get('languageCookie')
-                return typeof lc === 'undefined' || lc === 'English'
             }
         }
     ),
     methods: {
         translatePath (p) {
-            if (this.isEnglish) {
+            if (this.languageObj[0] === 'Home') {
                 return p === '' ? 'home' : p
             } else {
                 var index = 0
