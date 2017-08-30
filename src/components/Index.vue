@@ -2,7 +2,17 @@
     <div>
         <generic-page :title="languageObj[15]" :typerText="typerText">
             <div slot="body">
-                <div class="dummy"></div>
+                <div class="dummy">
+                    about me,
+                    location,
+                    next target/to do,
+                    talk about JavaScript,
+                    language,
+                    programming language,
+                    skills,
+                    Education,
+                    Testimonials
+                </div>
             </div>
         </generic-page>
     </div>

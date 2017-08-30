@@ -2,6 +2,7 @@ import util from '@/util/util'
 import _ from 'lodash'
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/vuex/store'
 import Index from '@/components/Index'
 import Work from '@/components/Work'
 import Blog from '@/components/Blog'
@@ -12,6 +13,10 @@ Vue.use(Router)
 
 // compute the blog children components
 var blogArr = _.values(blogs).map(x => {
+    if (typeof x.specificBlogData !== 'undefined') {
+        // inject data from each blog to store
+        store.commit('ADD_BLOG_DATA', Object.assign({}, x.specificBlogData, {name: x.name}))
+    }
     return {
         path: util.camelToKebab(x.name),
         component: x

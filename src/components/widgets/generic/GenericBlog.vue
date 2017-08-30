@@ -22,15 +22,13 @@
 import util from '@/util/util'
 import vuex from 'vuex'
 export default {
-    props: ['name'],
+    props: ['name', 'specificBlogData'],
     computed: Object.assign({},
-        vuex.mapGetters(['blogData', 'languageObj']),
+        vuex.mapGetters(['languageObj']),
         {
             thisBlog () {
                 return Object.assign({},
-                    this.blogData.filter(x => {
-                        return x.name === this.name
-                    })[0],
+                    this.specificBlogData,
                     {
                         title: util.splitCamel(this.name)
                     }
