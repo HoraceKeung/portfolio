@@ -1,11 +1,15 @@
 <template>
     <div class="container">
-        <div class="mb-3">
-            <div class="input-group">
-                <span class="input-group-addon" id="search-blog-addon"><i class="fa fa-search mr-1" aria-hidden="true"></i>{{languageObj[29]}}</span>
-                <input :value="blogSearchWord" @input="searchBlog($event.target.value.trim())" type="text" class="form-control" placeholder="Search by title or tag (e.g. #English)" aria-label="SearchBlog" aria-describedby="search-blog-addon">
-            </div>
+        <!-- START blog search -->
+        <div class="input-group mb-3">
+            <span class="input-group-addon" id="search-blog-addon"><i class="fa fa-search mr-1" aria-hidden="true"></i>{{languageObj[29]}}</span>
+            <input :value="blogSearchWord" @input="searchBlog($event.target.value.trim())" type="text" class="form-control" placeholder="Search by title or tag (e.g. #English)" aria-label="SearchBlog" aria-describedby="search-blog-addon">
+            <span class="input-group-btn" v-if="blogSearchWord!==''">
+                <button class="btn btn-danger" type="button" @click="searchBlog('')">{{languageObj[30]}}</button>
+            </span>
         </div>
+        <!-- END blog search -->
+        <!-- START blog list -->
         <div v-for="(b,index) in searchedBlogData" :class="'card'+(index===searchedBlogData.length-1?'':' mb-3')">
             <div class="row">
                 <div class="col-md-4">
@@ -28,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <!-- END blog list -->
     </div>
 </template>
 
