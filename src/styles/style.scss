@@ -1,4 +1,8 @@
 @import url("color.css");
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     color: var(--grey);
 }
@@ -12,18 +16,14 @@ a:hover, .hash-tag:hover {
 ul {
     list-style: none;
 }
+.color-dynamic {
+    color: var(--color);
+}
 .btn, .pointer {
     cursor: pointer;
 }
 .btn:focus {
     box-shadow: none;
-}
-html {
-    position: relative;
-    min-height: 100%;
-}
-.color-dynamic {
-    color: var(--color);
 }
 .btn-dynamic {
     background-color: var(--color);
@@ -43,6 +43,20 @@ html {
 .btn-outline-dynamic:hover {
     color: #fff;
     background-color: var(--color);
+}
+.blog-img-div {
+    height: 283.07px;
+    overflow: hidden;
+    position: relative;
+}
+.blog-img-div img {
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
 }
 
 // START v-tooltip
