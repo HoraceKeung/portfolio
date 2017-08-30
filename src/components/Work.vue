@@ -1,7 +1,13 @@
 <template>
     <div>
         <generic-page :title="languageObj[1]">
-            <div slot="body">
+            <div slot="body" class="container">
+                <router-link to="/work/software">
+                    <div><p>Software</p></div>
+                </router-link>
+                <router-link to="/work/art">
+                    <div><p>Art</p></div>
+                </router-link>
             </div>
         </generic-page>
     </div>
