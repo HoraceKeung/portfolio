@@ -58,7 +58,10 @@ ul {
     -webkit-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
 }
-
+.input-group-addon {
+    background-color: var(--grey);
+    color: #fff;
+}
 // START v-tooltip
 .tooltip {
   display: block !important;

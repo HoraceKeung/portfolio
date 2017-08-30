@@ -36,6 +36,9 @@ const getters = {
     // for blog
     blogData: function (state) {
         return state.blog.blogData
+    },
+    blogSearchWord: function (state) {
+        return state.blog.blogSearchWord
     }
 }
 

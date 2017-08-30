@@ -1,4 +1,5 @@
 const state = {
+    blogSearchWord: '',
     blogData: [
         {
             name: 'Long',
@@ -18,6 +19,9 @@ const state = {
 }
 
 const mutations = {
+    SET_BLOG_SEARCH_WORD (state, str) {
+        state.blogSearchWord = str
+    }
 }
 
 export default {

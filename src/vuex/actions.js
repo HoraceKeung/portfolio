@@ -4,6 +4,7 @@ import alertController from '@/util/alertController'
 import languageLoader from '@/util/languageLoader'
 import Cookies from 'js-cookie'
 import tinycolor from 'tinycolor2'
+import router from '@/router'
 
 const actions = {
     // for option
@@ -75,6 +76,11 @@ const actions = {
         } else {
             alertController.callAlert('top', store.state.languageObj[20], 'danger')
         }
+    },
+    // for blog
+    searchBlog: function (store, str) {
+        store.commit('SET_BLOG_SEARCH_WORD', str)
+        router.push('/blog')
     }
 }
 

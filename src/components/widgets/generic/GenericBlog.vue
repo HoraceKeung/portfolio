@@ -9,7 +9,7 @@
                 <p><small>{{formatDate(thisBlog.date)}}</small></P>
                 <p>{{thisBlog.desc}}</p>
                 <slot name="blogBody"></slot>
-                <p><span class="hash-tag pointer" v-for="t in thisBlog.tags">{{'#'+t+' '}}</span></P>
+                <p><span @click="searchBlog('#'+t)" class="hash-tag pointer" v-for="t in thisBlog.tags">{{'#'+t+' '}}</span></P>
                 <router-link to="/blog">
                     <button class="btn btn-sm btn-dynamic" type="button">{{languageObj[28]}}</button>
                 </router-link>
@@ -39,6 +39,7 @@ export default {
         }
     ),
     methods: Object.assign({},
+        vuex.mapActions(['searchBlog']),
         util
     )
 }
