@@ -164,7 +164,7 @@ export default {
     height: 100%;
     position: fixed;
     top: 0px;
-    z-index: 2;
+    z-index: 5;
 }
 .current-pos-indicator {
     color: #fff;

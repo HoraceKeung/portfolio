@@ -144,6 +144,7 @@ export default {
     position: fixed;
     margin: 1rem;
     width: 0px;
+    z-index: 5;
 }
 .circle-menu-top-left {
     top: 0px;
