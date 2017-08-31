@@ -72,21 +72,6 @@ export default {
 
 <style scoped>
 @import url("../styles/color.css");
-.aligner {
-    cursor: pointer;
-    top: 0rem;
-    left: 0rem;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25rem;
-}
-.aligner:hover {
-    background: rgba(25, 25, 25, .5);
-}
 .card-text {
     color: #fff;
 }

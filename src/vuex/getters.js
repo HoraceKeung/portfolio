@@ -39,6 +39,13 @@ const getters = {
     },
     blogSearchWord: function (state) {
         return state.blog.blogSearchWord
+    },
+    // for work
+    softwareData: function (state) {
+        return state.work.softwareData
+    },
+    artData: function (state) {
+        return state.work.artData
     }
 }
 

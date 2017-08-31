@@ -6,6 +6,10 @@ import alert from './modules/alert'
 import option from './modules/option'
 import contact from './modules/contact'
 import blog from './modules/blog'
+import work from './modules/work'
+import moduless from './modules'
+
+console.log(JSON.stringify(moduless, null, 4))
 
 Vue.use(Vuex)
 
@@ -63,7 +67,8 @@ export default new Vuex.Store({
         option,
         contact,
         alert,
-        blog
+        blog,
+        work
     },
     strict: true
 })

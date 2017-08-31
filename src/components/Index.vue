@@ -13,6 +13,7 @@
                     Education,
                     Testimonials
                 </div>
+                <p>Horace worked with WhotNow, building both a public-facing promotional website and an internal website for staff from scratch.  He shows a rare dedication and efficiency, along with a solid grasp of code architecture and aesthetics.  He also has a knack for analyzing problems, and the ability to cut through to their simplest solutions.  Working with Horace, we were able to achieve our goal of fully-featured internal and external JavaScript SPAs with a minimum of fuss.</p>
             </div>
         </generic-page>
     </div>

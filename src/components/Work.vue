@@ -2,12 +2,7 @@
     <div>
         <generic-page :title="languageObj[1]">
             <div slot="body" class="container">
-                <router-link to="/work/software">
-                    <div><p>Software</p></div>
-                </router-link>
-                <router-link to="/work/art">
-                    <div><p>Art</p></div>
-                </router-link>
+                <router-view></router-view>
             </div>
         </generic-page>
     </div>
