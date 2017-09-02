@@ -2,14 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions'
 import getters from './getters'
-import alert from './modules/alert'
-import option from './modules/option'
-import contact from './modules/contact'
-import blog from './modules/blog'
-import work from './modules/work'
-import moduless from './modules'
-
-console.log(JSON.stringify(moduless, null, 4))
+import modules from './modules'
 
 Vue.use(Vuex)
 
@@ -63,12 +56,6 @@ export default new Vuex.Store({
     getters,
     actions,
     mutations,
-    modules: {
-        option,
-        contact,
-        alert,
-        blog,
-        work
-    },
+    modules,
     strict: true
 })

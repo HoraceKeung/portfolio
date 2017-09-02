@@ -21,6 +21,7 @@ const mutations = {
 }
 
 export default {
+    name: 'contact',
     state,
     mutations
 }

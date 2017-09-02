@@ -39,6 +39,7 @@ const mutations = {
 }
 
 export default {
+    name: 'alert',
     state,
     mutations
 }

@@ -26,26 +26,9 @@ const processChildren = function (obj, name, mutation) {
     })
 }
 
-// compute the blog children components
-var blogArr = _.values(blogs).map(x => {
-    if (typeof x.specificBlogData !== 'undefined') {
-        // inject data from each blog to store
-        store.commit('ADD_BLOG_DATA', Object.assign({}, x.specificBlogData, {name: x.name}))
-    }
-    return {
-        path: util.camelToKebab(x.name),
-        component: x
-    }
-})
-
-var artArr = _.values(art).map(x => {
-    return {
-        path: util.camelToKebab(x.name),
-        component: x
-    }
-})
-
-var softwareArr = processChildren(software, 'Software', 'ADD_SOFTWARE_DATA')
+const blogArr = processChildren(blogs, 'Blog', 'ADD_BLOG_DATA')
+const artArr = processChildren(art, 'Art', 'ADD_ART_DATA')
+const softwareArr = processChildren(software, 'Software', 'ADD_SOFTWARE_DATA')
 
 const routes = [
     { path: '/', component: Index },

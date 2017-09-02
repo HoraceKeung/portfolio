@@ -13,6 +13,7 @@ const mutations = {
 }
 
 export default {
+    name: 'blog',
     state,
     mutations
 }
