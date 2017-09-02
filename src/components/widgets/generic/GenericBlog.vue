@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="blog-img-div">
-                <img class="card-img-top" src="http://via.placeholder.com/1500x284" alt="Blog img">
+                <img class="card-img-top" :src="thisBlog.img" alt="Blog img">
             </div>
             <div class="card-body">
                 <h2 class="card-title">{{thisBlog.title}}</h2>

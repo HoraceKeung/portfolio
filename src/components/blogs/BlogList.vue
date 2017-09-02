@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="blog-img-div">
-                        <img class="card-img-top" src="http://via.placeholder.com/1500x284" alt="Blog img">
+                        <img class="card-img-top" :src="b.img" alt="Blog img">
                     </div>
                 </div>
                 <div class="col-md-8">

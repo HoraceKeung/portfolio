@@ -14,7 +14,7 @@ export default {
     components: {GenericBlog},
     specificBlogData: {// This is required for each new blog, this data will be injected to the store in router index.js
         tags: ['English', 'Website'],
-        img: '',
+        img: '/static/img/birthday_cake.png',
         desc: 'Let us celebrate the birth of this website!',
         date: '20170904'
     }
