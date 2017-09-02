@@ -83,4 +83,9 @@ export default {
 .vc-chrome {
     margin: 0 auto;
 }
+@media screen and (max-width: 576px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+}
 </style>
