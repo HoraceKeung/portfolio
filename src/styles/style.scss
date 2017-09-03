@@ -77,6 +77,9 @@ ul {
 .aligner:hover {
     background: rgba(25, 25, 25, .5);
 }
+.aligner:hover h4 {
+    color: #fff;
+}
 // START v-tooltip
 .tooltip {
   display: block !important;

@@ -13,11 +13,7 @@
 import vuex from 'vuex'
 export default {
     name: '', // this name is needed as the path
-    computed: Object.assign({},
-        vuex.mapGetters(['softwareData']),
-        {
-        }
-    )
+    computed: vuex.mapGetters(['softwareData'])
 }
 </script>
 
