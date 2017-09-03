@@ -41,8 +41,14 @@ const getters = {
         return state.blog.blogSearchWord
     },
     // for work
+    softwareSearchWord: function (state) {
+        return state.work.softwareSearchWord
+    },
     softwareData: function (state) {
         return state.work.softwareData
+    },
+    artSearchWord: function (state) {
+        return state.work.artSearchWord
     },
     artData: function (state) {
         return state.work.artData

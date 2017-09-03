@@ -1,14 +1,6 @@
 <template>
     <div class="container">
-        <!-- START blog search -->
-        <div class="input-group mb-3">
-            <span class="input-group-addon" id="search-blog-addon"><i class="fa fa-search mr-1" aria-hidden="true"></i>{{languageObj[29]}}</span>
-            <input :value="blogSearchWord" @input="searchBlog($event.target.value.trim())" type="text" class="form-control" placeholder="Search by title or tag (e.g. #English)" aria-label="SearchBlog" aria-describedby="search-blog-addon">
-            <span class="input-group-btn" v-if="blogSearchWord!==''">
-                <button class="btn btn-danger" type="button" @click="searchBlog('')">{{languageObj[30]}}</button>
-            </span>
-        </div>
-        <!-- END blog search -->
+        <search-bar namespace="blog"></search-bar>
         <!-- START blog list -->
         <div v-for="(b,index) in searchedBlogData" :class="'card'+(index===searchedBlogData.length-1?'':' mb-3')">
             <div class="row">
@@ -22,7 +14,7 @@
                         <h2 class="card-title">{{splitCamel(b.name)}}</h2>
                         <p><small>{{formatDate(b.date)}}</small></P>
                         <p class="block-with-text">{{b.desc}}</p>
-                        <p><span class="hash-tag pointer" v-for="t in b.tags" @click="searchBlog('#'+t)">{{'#'+t+' '}}</span></P>
+                        <p><span class="hash-tag pointer" v-for="t in b.tags" @click="search({namespace:'blog',str:'#'+t})">{{'#'+t+' '}}</span></P>
                         <div class="float-bottom">
                             <router-link :to="'/blog/'+camelToKebab(b.name)">
                                 <button class="btn btn-sm btn-dynamic" type="button">{{languageObj[27]}}</button>
@@ -37,48 +29,22 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import SearchBar from '@/components/widgets/generic/SearchBar'
 import util from '@/util/util'
 import vuex from 'vuex'
 export default {
     name: '', // this name is needed as the path
+    components: {SearchBar},
     computed: Object.assign({},
         vuex.mapGetters(['blogData', 'languageObj', 'blogSearchWord']),
         {
             searchedBlogData () {
-                if (this.blogSearchWord === '') {
-                    return this.blogData
-                }
-                return this.blogData.filter((x) => {
-                    const titleArr = util.splitCamel(x.name).toLowerCase().split(' ')
-                    const searchWordArr = this.blogSearchWord.toLowerCase().split(' ').filter((x) => {
-                        return x.charAt(0) !== '#'
-                    })
-                    for (let i = 0; i < titleArr.length; i++) {
-                        for (let j = 0; j < searchWordArr.length; j++) {
-                            if (titleArr[i].includes(searchWordArr[j])) {
-                                return true
-                            }
-                        }
-                    }
-                    const searchTagArr = this.blogSearchWord.toLowerCase().split(' ').filter((x) => {
-                        return x.charAt(0) === '#'
-                    }).reduce((a, b) => {
-                        return a.concat(_.drop(b.split('#')))
-                    }, [])
-                    for (let i = 0; i < x.tags.length; i++) {
-                        for (let j = 0; j < searchTagArr.length; j++) {
-                            if (x.tags[i].toLowerCase() === searchTagArr[j]) {
-                                return true
-                            }
-                        }
-                    }
-                })
+                return util.searchWorkOrBlog(this.blogData, this.blogSearchWord)
             }
         }
     ),
     methods: Object.assign({},
-        vuex.mapActions(['searchBlog']),
+        vuex.mapActions(['search']),
         util
     )
 }

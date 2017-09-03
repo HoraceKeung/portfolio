@@ -77,10 +77,10 @@ const actions = {
             alertController.callAlert('top', store.state.languageObj[20], 'danger')
         }
     },
-    // for blog
-    searchBlog: function (store, str) {
-        store.commit('SET_BLOG_SEARCH_WORD', str)
-        router.push('/blog')
+    // for search bar
+    search: function (store, payload) { // payload contains 'namespace' which will be 'blog', 'software', or 'art', etc, and 'str' is the search word
+        store.commit('SET_' + payload.namespace.toUpperCase() + '_SEARCH_WORD', payload.str)
+        router.push('/' + (payload.namespace === 'blog' ? payload.namespace : 'work/' + payload.namespace))
     }
 }
 
