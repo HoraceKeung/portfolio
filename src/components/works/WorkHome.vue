@@ -20,11 +20,11 @@ export default {
             workCategories: function () {
                 return [
                     {
-                        name: 'Software',
+                        name: this.languageObj[31].toUpperCase(),
                         link: '/work/software'
                     },
                     {
-                        name: 'Art',
+                        name: this.languageObj[32].toUpperCase(),
                         link: '/work/art'
                     }
                 ]

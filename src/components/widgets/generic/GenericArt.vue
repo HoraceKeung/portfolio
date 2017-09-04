@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img v-if="specificArtData.img" class="w-100 mb-3" :src='specificArtData.img'>
+        <img v-if="specificArtData.img" class="mw-100 mb-3 mx-auto d-block" :src='specificArtData.img'>
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">{{splitCamel(name)}}</h2>

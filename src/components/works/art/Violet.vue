@@ -6,13 +6,13 @@
 import GenericArt from '@/components/widgets/generic/GenericArt'
 export default {
     components: {GenericArt},
-    name: 'FallingUma',
+    name: 'Violet',
     specificArtData: {// This is required for each new art, this data will be injected to the store in router index.js
         tags: ['2D'],
-        img: '/static/img/falling_uma.png',
-        icon: '/static/img/falling_uma_icon.png',
-        date: '20150904',
-        desc: 'Legend says they came from the moon.'
+        img: '/static/img/violet.png',
+        icon: '/static/img/violet_icon.png',
+        date: '20150818',
+        desc: 'Peace, chill, relax.'
     }
 }
 </script>
