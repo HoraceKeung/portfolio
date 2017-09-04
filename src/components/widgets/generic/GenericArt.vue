@@ -1,6 +1,9 @@
 <template>
     <div>
         <img v-if="specificArtData.img" class="mw-100 mb-3 mx-auto d-block" :src='specificArtData.img'>
+        <div v-if="specificArtData.modelId" class="sketchfab-embed-wrapper mb-3">
+            <iframe class="model-iframe" :src="'https://sketchfab.com/models/'+specificArtData.modelId+'/embed'" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+        </div>
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">{{splitCamel(name)}}</h2>
@@ -29,4 +32,18 @@ export default {
 </script>
 
 <style scoped>
+/*https://www.h3xed.com/web-development/how-to-make-a-responsive-100-width-youtube-iframe-embed*/
+.sketchfab-embed-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.model-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 </style>
