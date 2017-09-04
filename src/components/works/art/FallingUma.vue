@@ -6,13 +6,13 @@
 import GenericArt from '@/components/widgets/generic/GenericArt'
 export default {
     components: {GenericArt},
-    name: 'BirthdayCake',
+    name: 'FallingUma',
     specificArtData: {// This is required for each new art, this data will be injected to the store in router index.js
         tags: ['2D'],
-        img: '/static/img/birthday_cake.png',
-        icon: '/static/img/birthday_cake_icon.png',
-        date: '20170904',
-        desc: 'Let us celebrate the birth of this website!'
+        img: '/static/img/falling_uma.png',
+        icon: '/static/img/falling_uma_icon.png',
+        date: '20150904',
+        desc: '何この可愛い生物？'
     }
 }
 </script>
