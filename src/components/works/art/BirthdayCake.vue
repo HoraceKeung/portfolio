@@ -11,7 +11,7 @@ export default {
         tags: ['2D'],
         img: '/static/img/birthday_cake.png',
         icon: '/static/img/birthday_cake_icon.png',
-        date: '20170904',
+        date: '20170902',
         desc: 'Let us celebrate the birth of this website!'
     }
 }

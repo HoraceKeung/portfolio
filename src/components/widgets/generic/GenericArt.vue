@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">{{splitCamel(name)}}</h2>
-                <p><small>{{formatDate(specificArtData.date)}}</small></P>
+                <p><small>{{'Last worked on '+formatDate(specificArtData.date)}}</small></P>
                 <p v-if="specificArtData.desc">{{specificArtData.desc}}</p>
                 <p><span class="hash-tag pointer" @click="search({namespace:'art',str:'#'+t})" v-for="t in specificArtData.tags">{{'#'+t+' '}}</span></P>
                 <router-link to="/work/art">

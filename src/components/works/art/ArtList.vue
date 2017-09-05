@@ -3,7 +3,7 @@
         <search-bar namespace="art"></search-bar>
         <div class="row no-gutters">
             <div class="col-sm-6 col-md-3 work-square pointer" v-for="a in searchedArtData" @click="$router.push('art/'+camelToKebab(a.name))">
-                <div class="aligner"><h4 class="art-name mx-3">{{splitCamel(a.name).toUpperCase()}}</h4></div>
+                <div class="aligner"><h4 class="mx-3">{{splitCamel(a.name).toUpperCase()}}</h4></div>
                 <img :src="a.icon" :alt="a.name">
             </div>
         </div><br>
@@ -28,18 +28,9 @@ export default {
             }
         }
     ),
-    methods: Object.assign({},
-        vuex.mapActions(['search']),
-        util
-    )
+    methods: util
 }
 </script>
 
 <style scoped>
-.work-square img {
-    width: 100%;
-}
-.art-name {
-    color: transparent;
-}
 </style>

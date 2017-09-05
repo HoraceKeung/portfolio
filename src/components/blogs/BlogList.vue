@@ -5,7 +5,7 @@
         <div v-for="(b,index) in searchedBlogData" :class="'card'+(index===searchedBlogData.length-1?'':' mb-3')">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="blog-img-div">
+                    <div class="big-card-img-div">
                         <img class="card-img-top" :src="b.img" alt="Blog img">
                     </div>
                 </div>
