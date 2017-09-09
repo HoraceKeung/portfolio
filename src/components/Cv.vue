@@ -7,7 +7,7 @@
                         <h3>Horace Keung</h3>
                         <p>testing</p>
                     </div>
-                    <button type="button" class="btn btn-dynamic" @click="downloadCV">Download as PDF</button>
+                    <button type="button" class="btn btn-dynamic" @click="downloadCV">{{languageObj[34]}}</button>
                 </div>
             </div>
         </generic-page>
@@ -22,6 +22,7 @@ export default {
     computed: vuex.mapGetters(['languageObj']),
     methods: {
         downloadCV () {
+            // https://github.com/Xportability/css-to-pdf
             return window.xepOnline.Formatter.Format('cv', {filename: 'Horace Keung CV', render: 'download', pageWidth: '216mm', pageHeight: '279mm'})
         }
     }
