@@ -1,9 +1,11 @@
 @import url("color.css");
+@import url('https://fonts.googleapis.com/css?family=Arimo');
 html {
     position: relative;
     min-height: 100%;
 }
 body {
+    font-family: 'Arimo', sans-serif;
     color: var(--grey);
 }
 a, .hash-tag {

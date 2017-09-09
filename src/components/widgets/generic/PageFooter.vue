@@ -9,7 +9,7 @@
         </div>
         <div class="pattern">
             <div class="container">
-                <div style="text-align:center;height:0px;"><button class="btn btn-cv"><h5>{{languageObj[7]}}</h5></button></div>
+                <div style="text-align:center;height:0px;"><button class="btn btn-cv" @click="$router.push('/cv')"><h5>{{languageObj[7]}}</h5></button></div>
                 <div class="pattern-upper"></div>
                 <div class="pattern-lower"></div>
             </div>

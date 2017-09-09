@@ -11,6 +11,7 @@ import blogs from '@/components/blogs'
 import Option from '@/components/Option'
 import art from '@/components/works/art'
 import software from '@/components/works/software'
+import Cv from '@/components/Cv'
 
 Vue.use(Router)
 
@@ -42,7 +43,8 @@ const routes = [
         ]
     },
     { path: '/blog', component: Blog, children: blogArr },
-    { path: '/option', component: Option }
+    { path: '/option', component: Option },
+    { path: '/cv', component: Cv }
 ]
 
 const router = new Router({
