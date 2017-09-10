@@ -5,6 +5,7 @@
                 <div class="container cv-container">
                     <div class="paper">
                         <div id="cv">
+                            <!-- START CV header -->
                             <table width="100%" class="cv-header">
                                 <tbody>
                                     <tr>
@@ -14,17 +15,19 @@
                                     </tr>
                                 </tbody>
                             </table><br>
+                            <!-- END CV header -->
                             <table class="cv-body" width="100%"><tr>
+                                <!-- START table left -->
                                 <td><table class="table-left">
                                     <tbody>
                                         <tr>
-                                            <th><i class="fa fa-user" aria-hidden="true"></i> PERSONAL STATEMENT</th>
+                                            <th class="cv-section-header"><i class="fa fa-user" aria-hidden="true"></i> PERSONAL STATEMENT</th>
                                         </tr>
                                         <tr>
                                             <td><p class="mb-3">{{personalStatement}}</p></td>
                                         </tr>
                                         <tr>
-                                            <th><i class="fa fa-briefcase" aria-hidden="true"></i> EXPERIENCE</th>
+                                            <th class="cv-section-header"><i class="fa fa-briefcase" aria-hidden="true"></i> EXPERIENCE</th>
                                         </tr>
                                         <tr>
                                             <td><div v-for="e in experience" class="mb-3">
@@ -35,10 +38,13 @@
                                         </tr>
                                     </tbody>
                                 </table></td>
+                                <!-- END table left -->
+                                <!-- START table right -->
                                 <td><table class="table-right">
                                     <tbody>
+                                        <!-- START Education -->
                                         <tr>
-                                            <th><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</th>
+                                            <th class="cv-section-header"><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</th>
                                         </tr>
                                         <tr>
                                             <td><div v-for="e in education" class="mb-3">
@@ -48,26 +54,52 @@
                                                 <p class="mb-1" v-if="e.aLevels">{{'A Level: '+e.aLevels}}</p>
                                             </div></td>
                                         </tr>
+                                        <!-- END Education -->
+                                        <!-- START Skills -->
                                         <tr>
-                                            <th><i class="fa fa-wrench" aria-hidden="true"></i> SKILLS</th>
+                                            <th class="cv-section-header"><i class="fa fa-wrench" aria-hidden="true"></i> SKILLS</th>
                                         </tr>
                                         <tr>
-                                            <td><div class="mt-2 mb-3"><div v-for="l in programmingLanguages">
-                                                <p class="mb-1">{{l.name}}</p>
-                                            </div></div></td>
+                                            <td><table width="100%" class="mb-3">
+                                                <tbody>
+                                                    <tr>
+                                                        <th colspan="2"><div class="my-2">Programming</div></th>
+                                                        <th><div class="my-2 text-right">Miscellaneous</div></th>
+                                                    </tr>
+                                                    <tr v-for="n in programmingLanguages.length">
+                                                        <td>{{programmingLanguages[n-1].name}}</td>
+                                                        <td class="color-dynamic">
+                                                            <!-- the following i tags need to be inline -->
+                                                            <i v-for="s in Math.floor(programmingLanguages[n-1].score/2)" class="fa fa-star" aria-hidden="true"></i><i v-if="programmingLanguages[n-1].score%2!==0" class="fa fa-star-half-o" aria-hidden="true"></i><i v-for="s in 5-Math.ceil(programmingLanguages[n-1].score/2)" class="fa fa-star-o" aria-hidden="true"></i>
+                                                        </td>
+                                                        <td class="miscellaneous-skills">{{miscellaneous[n-1]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table></td>
+                                        </tr>
+                                        <!-- END Skills -->
+                                        <!-- START Interests -->
+                                        <tr>
+                                            <th class="cv-section-header"><i class="fa fa-paint-brush" aria-hidden="true"></i> INTERESTS</th>
                                         </tr>
                                         <tr>
-                                            <th><i class="fa fa-paint-brush" aria-hidden="true"></i> INTERESTS</th>
+                                            <td><table width="100%" class="interests-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="i in interests"><div class="my-2 text-center"><i :class="'color-dynamic fa-4x '+i.icon" aria-hidden="true"></i></div></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center" v-for="i in interests">{{i.name}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table></td>
                                         </tr>
-                                        <tr>
-                                            <td><div class="mt-2">
-                                                <div v-for="i in interests">
-                                                    <p class="mb-1"><i :class="'color-dynamic '+i.icon" aria-hidden="true"></i> {{i.name}}</p>
-                                                </div>
-                                            </div></td>
-                                        </tr>
+                                        <!-- END Interests -->
                                     </tbody>
                                 </table></td>
+                                <!-- END table right -->
                             </tr></table>
                         </div>
                     </div><br>
@@ -99,7 +131,7 @@ export default {
                 'https://horacekeung.github.io',
                 '07780 977252'
             ],
-            personalStatement: 'Coming soon',
+            personalStatement: '',
             experience: [
                 {
                     start: 'May 2016',
@@ -153,14 +185,14 @@ export default {
                 {name: 'Clojure', score: 3},
                 {name: 'SQL', score: 2}
             ],
-            Miscellaneous: [
+            miscellaneous: [
                 '3ds Max',
                 'Android Studio',
-                'BrowserStack',
+                'Chinese',
                 'Git',
                 'iBeacon',
                 'Jira',
-                'MS Office',
+                'Kinect',
                 'Photoshop',
                 'Stripe',
                 'Visual Studio'
@@ -204,8 +236,17 @@ export default {
 .name-td {
     vertical-align: top;
 }
-th {
+.cv-section-header {
     border-bottom: 1px solid #000;
     color: var(--color);
+}
+.miscellaneous-skills {
+    text-align: right;
+    border-left: 1px solid #000;
+    padding-left: 1rem;
+    white-space: nowrap;
+}
+.interests-table {
+    table-layout: fixed;
 }
 </style>
