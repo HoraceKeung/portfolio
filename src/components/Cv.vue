@@ -49,12 +49,22 @@
                                             </div></td>
                                         </tr>
                                         <tr>
+                                            <th><i class="fa fa-wrench" aria-hidden="true"></i> SKILLS</th>
+                                        </tr>
+                                        <tr>
+                                            <td><div class="mt-2 mb-3"><div v-for="l in programmingLanguages">
+                                                <p class="mb-1">{{l.name}}</p>
+                                            </div></div></td>
+                                        </tr>
+                                        <tr>
                                             <th><i class="fa fa-paint-brush" aria-hidden="true"></i> INTERESTS</th>
                                         </tr>
                                         <tr>
-                                            <td><div class="mt-2"><div v-for="i in interests">
-                                                <p class="mb-1"><i class="fa fa-square color-dynamic" aria-hidden="true"></i> {{i}}</p>
-                                            </div></div></td>
+                                            <td><div class="mt-2">
+                                                <div v-for="i in interests">
+                                                    <p class="mb-1"><i :class="'color-dynamic '+i.icon" aria-hidden="true"></i> {{i.name}}</p>
+                                                </div>
+                                            </div></td>
                                         </tr>
                                     </tbody>
                                 </table></td>
@@ -117,7 +127,7 @@ export default {
                     end: 'Jul 2015',
                     organization: 'University of Sussex',
                     degree: 'BSc Games and Multimedia Environments (1st class Hons.)',
-                    modules: ['Human-Computer Interaction', 'Multimedia Design and Applications', 'Software Engineering', 'Web 3D Applications']
+                    modules: ['Human-Computer Interaction', 'Multimedia Design and Applications', 'Web 3D Applications']
                 },
                 {
                     start: '2005',
@@ -127,9 +137,33 @@ export default {
                 }
             ],
             interests: [
-                'Interested in 3D modelling, spent time learning from online tutorials, and developed modelling skills',
-                'Also interested in texturing the model, spent time developing drawing skills using Photoshop and a graphics tablet',
-                'Learned different musical instruments during childhood, with basic knowledge of music theory, also interested in composing music'
+                {name: '3D modelling', icon: 'fa fa-cube'},
+                {name: 'Digital drawing', icon: 'fa fa-picture-o'},
+                {name: 'Music', icon: 'fa fa-music'}
+            ],
+            programmingLanguages: [
+                {name: 'JavaScript', score: 10},
+                {name: 'HTML', score: 10},
+                {name: 'CSS', score: 10},
+                {name: 'C#', score: 6},
+                {name: 'Java', score: 5},
+                {name: 'Python', score: 4},
+                {name: 'MATLAB', score: 4},
+                {name: 'C++', score: 3},
+                {name: 'Clojure', score: 3},
+                {name: 'SQL', score: 2}
+            ],
+            Miscellaneous: [
+                '3ds Max',
+                'Android Studio',
+                'BrowserStack',
+                'Git',
+                'iBeacon',
+                'Jira',
+                'MS Office',
+                'Photoshop',
+                'Stripe',
+                'Visual Studio'
             ]
         }
     }
@@ -141,13 +175,11 @@ export default {
 .cv-container {
     position: relative;
 }
-#cv {
-    padding: 0.5rem;
-}
 .paper {
     -webkit-box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.4);
+    padding: 3rem;
 }
 .cv-header p {
     font-size: 80%;
@@ -175,8 +207,5 @@ export default {
 th {
     border-bottom: 1px solid #000;
     color: var(--color);
-}
-ul {
-    list-style: disc;
 }
 </style>
