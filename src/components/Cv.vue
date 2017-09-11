@@ -119,7 +119,7 @@ export default {
     methods: {
         downloadCV () {
             // for more info, read https://github.com/Xportability/css-to-pdf
-            return window.xepOnline.Formatter.Format('cv', {filename: 'Horace Keung CV', render: 'download', pageWidth: '216mm', pageHeight: '279mm'})
+            return window.xepOnline.Formatter.Format('cv', {filename: 'Horace_Keung_CV', render: 'download', pageWidth: '216mm', pageHeight: '279mm'})
         }
     },
     data () {
