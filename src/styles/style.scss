@@ -101,7 +101,7 @@ ul {
   z-index: 10000;
 
   .tooltip-inner {
-    background: black;
+    background: var(--grey);
     color: white;
     border-radius: 0.25rem;
     padding: 3px 8px;

@@ -24,7 +24,7 @@
                                             <th class="cv-section-header"><i class="fa fa-user" aria-hidden="true"></i> PERSONAL STATEMENT</th>
                                         </tr>
                                         <tr>
-                                            <td><p class="mb-3">{{personalStatement}}</p></td>
+                                            <td><p class="mt-2 mb-3">{{personalStatement}}</p></td>
                                         </tr>
                                         <tr>
                                             <th class="cv-section-header"><i class="fa fa-briefcase" aria-hidden="true"></i> EXPERIENCE</th>
@@ -131,7 +131,7 @@ export default {
                 'https://horacekeung.github.io',
                 '07780 977252'
             ],
-            personalStatement: '',
+            personalStatement: 'Passionate front end developer who is seeking a new challenging role which will utilize software engineering skills. Being described as reliable and competent by final year project supervisor in University of Sussex; also described as efficient and "has a knack for analyzing problems, and the ability to cut through to their simplest solutions" by a senior developer in the last role. Through work, Scrum software development framework was practiced, being able to accurately estimate the complexity of a task and committed to deliver on time. Constantly thinking of different possible use case of new feature or design during development, and were able to identify possible issues in the specification and improve the feature to prevent future problems.',
             experience: [
                 {
                     start: 'May 2016',
@@ -142,7 +142,8 @@ export default {
                         'Being the only JavaScript (Vue.js) developer in the company, worked on three web projects: public-facing promotional website, customer management web application, and an admin site for staff to monitor and manage different aspects of the business',
                         'Worked closely with a senior back-end developer, and learned how to work on some back-end tasks using Clojure and query Postgres database',
                         'WhotNow was looking for an alternative to build native mobile app that runs on both Android and iOS. Spent two weeks experimenting with React Native, learned how to build a simple application with state management using Redux',
-                        'Wrote a simple android app in Java to detect Estimote beacons'
+                        'Wrote a simple android app in Java to detect Estimote beacons',
+                        'Involved in the design of payment system and beacon related feature'
                     ]
                 }
             ],
@@ -165,7 +166,7 @@ export default {
                     start: '2005',
                     end: '2009',
                     organization: 'Framlingham College, Suffolk',
-                    aLevels: 'Physics (A), Mathematics (A), Further Mathematics (B).'
+                    aLevels: 'Physics (A), Mathematics (A), Further Mathematics (B), ICT (C).'
                 }
             ],
             interests: [
