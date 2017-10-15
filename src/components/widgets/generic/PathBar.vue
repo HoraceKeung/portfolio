@@ -52,7 +52,7 @@ export default {
             } else {
                 var index = 0
                 if (p !== '') {
-                    const eng = require('../../../../static/languages/English.json')
+                    const eng = require('../../../../static/languages/english.json')
                     index = _.findKey(eng, function (x) {
                         return x.toLowerCase() === p
                     })

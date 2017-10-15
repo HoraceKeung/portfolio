@@ -40,7 +40,7 @@
             <div slot="body">
                 <div class="row">
                     <div class="col-sm-6" v-for="l in languages">
-                        <p @click="setLang(l)" class="language-option pointer">{{l}}</p>
+                        <p @click="setLang(l.toLowerCase())" class="language-option pointer">{{l}}</p>
                     </div>
                 </div>
             </div>

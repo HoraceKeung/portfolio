@@ -17,7 +17,7 @@ const actions = {
     loadLanguageObj: function (store) {
         const lc = Cookies.get('languageCookie')
         if (typeof lc === 'undefined') {
-            languageLoader.load('English')// cookie not found, set default language to English
+            languageLoader.load('english')// cookie not found, set default language to English
         } else {
             languageLoader.load(lc)
         }
